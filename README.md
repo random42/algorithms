@@ -2,18 +2,20 @@
 
 Il presente documento riporta i testi degli esercizi da svolgere e consegnare al fine di poter sostenere la prova di laboratorio per il corso di Algoritmi e Strutture Dati, preceduti da alcune indicazioni e suggerimenti relativi allo svolgimento degli stessi.
 
+**Nota**: il presente documento contiene alcune formule descritte usando la sintassi [\LaTeX](https://www.latex-project.org). È possibile convertirlo in un pdf di più facile lettura usando l'utilty [pandoc](http://pandoc.org):
+
+    pandoc README.md -o README.pdf
+
+
 **Importante**:
 
 Gli esercizi sono divisi in una parte di sviluppo di una struttura dati e/o di un algoritmo e una (eventuale) parte in cui si esegue il codice sviluppato su un dataset dato. È importante tenere presente che nello sviluppare la prima parte degli esercizi si deve assumere di stare sviluppando una libreria generica intesa come fondamento di futuri programmi. Non è pertanto lecito fare assunzioni semplificative legate alla particolare applicazione della libreria ai dati forniti. Ad esempio non si può assumere che l'input di un algoritmo di ordinamento sia un vettore di un particolare tipo di elementi o che i valori dei nodi di un grafo siano necessariamente di tipo stringa.
 
-## Uso di ```Git```
+## Uso di [Git](http://git-scm.com)
 
+Durante la scrittura del codice è richiesto di usare in modo appropriato il sistema di versioning [*Git*](http://git-scm.com). Questa richiesta implica quanto segue:
 
-Durante la scrittura del codice è richiesto di usare in modo appropriato il
-sistema di versioning ```Git```. Questa richiesta implica quanto segue:
-
-- il progetto di laboratorio va inizializzato "clonando" il repository del
-  laboratorio come descritto nel file [Git](Git.md);
+- il progetto di laboratorio va inizializzato "clonando" il repository del laboratorio come descritto nel file [Git.md](Git.md);
 - come è prassi nei moderni ambienti di sviluppo, è richiesto di effettuare commit frequenti. L'ideale è un commit per ogni blocco di lavoro terminato (es. creazione e test di una nuova funzione, soluzione di un baco, creazione di una nuova interfaccia, ...);
 - ogni membro del gruppo dovrebbe effettuare il commit delle modifiche che lo hanno visto come principale sviluppatore;
 - al termine del lavoro si dovrà consegnare l'intero repository.
@@ -83,7 +85,11 @@ Implementare gli unit-test degli algoritmi secondo le indicazioni suggerite nel 
 
 #### Ordinamento di un array di interi
 
-Il file `integers.txt` che potete trovare seguendo il path `/usr/NFS/Linux/labalgoritmi/datasets/` (in laboratorio von Neumann, selezionare il disco Y) contiene 20 milioni di interi da ordinare. Gli interi sono scritti di seguito, ciascuno su una riga.
+Il file `integers.txt` che potete trovare seguendo il path
+
+    /usr/NFS/Linux/labalgoritmi/datasets/
+
+(in laboratorio von Neumann, selezionare il disco Y) contiene 20 milioni di interi da ordinare. Gli interi sono scritti di seguito, ciascuno su una riga.
 
 Implementare un'applicazione che, usando ciascuno degli algoritmi di ordinamento offerti dalla libreria, ordina gli interi contenuti nel file `integers.txt` in base a un criterio di ordinamento fornito in input (i possibili criteri di ordinamento non sono noti a priori: ad esempio, oltre agli usuali ordinamenti crescente e decrescente, potrebbero esserci ordinamenti basati sul numero di cifre nella rappresentazione decimale o binaria degli interi, ecc.).
 
@@ -96,7 +102,11 @@ Si misurino i tempi di risposta e si crei una breve relazione (circa una pagina)
 
 Implementare una funzione che accetta in input un intero N e un qualunque array A di interi e che verifica se A contiene due interi la cui somma è esattamente N. La funzione DEVE avere complessità $\Theta(KlogK)$ sul numero K di elementi dell'array A.
 
-Il file `sums.txt` che potete trovare seguendo il path `/usr/NFS/Linux/labalgoritmi/datasets/` (in laboratorio von Neumann, selezionare il disco Y) contiene 1000 interi. Gli interi sono scritti di seguito, ciascuno su una riga.
+Il file `sums.txt` che potete trovare seguendo il path
+
+    /usr/NFS/Linux/labalgoritmi/datasets/
+
+(in laboratorio von Neumann, selezionare il disco Y) contiene 1000 interi. Gli interi sono scritti di seguito, ciascuno su una riga.
 
 Come esempio di uso della funzione, implementare un'applicazione che carica in un array A gli interi contenuti nel file `integers.txt` e, per ciascun intero N contenuto nel file `sums.txt`, verifica se esso è la somma di due elementi contenuti in A.
 
@@ -138,11 +148,20 @@ Si implementi una seconda versione `edit_distance_dyn` della funzione, adottando
 Implementare gli unit-test degli algoritmi secondo le indicazioni suggerite nel documento [Unit Testing](UnitTesting.md).
 
 ### Uso delle funzioni implementate
-Il file `dictionary.txt` che potete trovare seguendo il path `/usr/NFS/Linux/labalgoritmi/datasets/` (in laboratorio von Neumann, selezionare il disco Y) contiene l'elenco (di una parte significativa) delle parole italiane. Le parole sono scritte di seguito, ciascuna su una riga.
+Il file `dictionary.txt` che potete trovare seguendo il path
+
+    /usr/NFS/Linux/labalgoritmi/datasets/
+
+(in laboratorio von Neumann, selezionare il disco Y) contiene l'elenco (di una parte significativa) delle parole italiane. Le parole sono scritte di seguito, ciascuna su una riga.
 
 Il file `words.txt` contiene un elenco di parole italiane, eventualmente contenenti errori di battitura.
 
-Si implementi un'applicazione che usa le funzioni `edit_distance` e `edit_distance_dyn` per determinare, per ogni parola `w`in `words.txt`, le parole in `dictionary.txt` con edit distance minima da `w`. Si sperimenti il funzionamento dell'applicazione sia utilizzando `edit_distance` e `edit_distance_dyn` e si riporti in una breve relazione (circa una pagina) i risultati degli esperimenti.
+Si implementi un'applicazione che usa le funzioni `edit_distance` e `edit_distance_dyn` per determinare, per ogni parola `w` in `words.txt`, le parole in `dictionary.txt` con edit distance minima da `w`. Si sperimenti il funzionamento dell'applicazione sia utilizzando `edit_distance` e `edit_distance_dyn` e si riporti in una breve relazione (circa una pagina) i risultati degli esperimenti.
+
+**TO BE CHANGED**:
+
+1) la versione non dinamica ha costo esponenziale e rischia di non terminare in tempi ragionevoli per parole più lunghe di pochi caratteri.
+2) meglio proporre un file da "correggere" contenente "poco" testo.
 
 **I FILE `dictionary.txt` E `words.txt` NON DEVONO ESSERE OGGETTO DI COMMIT SU GIT!**
 
@@ -178,7 +197,11 @@ N.B. Nel caso in cui il grafo sia costituito da una sola componente connessa, l'
 
 La struttura dati e l'algoritmo di Prim dovranno essere utilizzati con i dati contenuti nel file `italian_dist_graph.csv`.
 
-Il file `italian_dist_graph.csv` che potete recuperare seguendo il path `/usr/NFS/Linux/labalgoritmi/datasets/` (in laboratorio von Neumann, selezionare il disco Y) contiene le distanze in metri tra varie località italiane e una frazione delle località a loro più vicine. Il formato è un CSV standard: i campi sono separati da virgole; i record sono separati da "\n".
+Il file `italian_dist_graph.csv` che potete recuperare seguendo il path
+
+    /usr/NFS/Linux/labalgoritmi/datasets/
+
+(in laboratorio von Neumann, selezionare il disco Y) contiene le distanze in metri tra varie località italiane e una frazione delle località a loro più vicine. Il formato è un CSV standard: i campi sono separati da virgole; i record sono separati dal carattere di fine riga (`\n`).
 
 Ogni record contiene i seguenti dati:
 
