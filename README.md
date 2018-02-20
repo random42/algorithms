@@ -11,6 +11,10 @@ Il presente documento riporta i testi degli esercizi da svolgere e consegnare al
 
 Gli esercizi sono divisi in una parte di sviluppo di una struttura dati e/o di un algoritmo e una (eventuale) parte in cui si esegue il codice sviluppato su un dataset dato. È importante tenere presente che nello sviluppare la prima parte degli esercizi si deve assumere di stare sviluppando una libreria generica intesa come fondamento di futuri programmi. Non è pertanto lecito fare assunzioni semplificative legate alla particolare applicazione della libreria ai dati forniti. Ad esempio non si può assumere che l'input di un algoritmo di ordinamento sia un vettore di un particolare tipo di elementi o che i valori dei nodi di un grafo siano necessariamente di tipo stringa.
 
+In alcuni esercizi si ribadisce la necessità di implementare una versione generale della libreria. Ciò non vuol dire che dove questo non sia specificato esplicitamente sia lecita una implementazione meno generale.
+
+*Durante l'esame sarete chiamati a difendere la generalità dell'implmentazione proposta.*
+
 ## Uso di [Git](http://git-scm.com)
 
 Durante la scrittura del codice è richiesto di usare in modo appropriato il sistema di versioning [*Git*](http://git-scm.com). Questa richiesta implica quanto segue:
@@ -30,7 +34,7 @@ Si rammenta che la valutazione del progetto di laboratorio considererà anche l'
 ## Unit testing
 
 Come indicato esplicitamente nei testi degli esercizi, il progetto di laboratorio comprende anche la definizione di opportune suite di unit tests.
-Si rammenta, però, che il focus del laboratorio è l'implementazione di strutture dati e algoritmi. Relativamente agli unit-test sarà quindi sufficiente che gli studenti dimostrino di averne colto il senso e di saper realizzare una semplice suite di test sufficiente a coprire i casi più comuni (compresi, in particolare, i casi limite).
+Si rammenta, però, che il focus del laboratorio è l'implementazione di strutture dati e algoritmi. Relativamente agli unit-test sarà quindi sufficiente che gli studenti dimostrino di averne colto il senso e di saper realizzare una suite di test sufficiente a coprire i casi più comuni (compresi, in particolare, i casi limite).
 
 
 ## Linguaggio in cui sviluppare il laboratorio
@@ -89,7 +93,7 @@ Il file `integers.txt` che potete trovare seguendo il path
 
     /usr/NFS/Linux/labalgoritmi/datasets/
 
-(in laboratorio von Neumann, selezionare il disco Y) contiene 20 milioni di interi da ordinare. Gli interi sono scritti di seguito, ciascuno su una riga.
+(in laboratorio von Neumann, selezionare il disco Y) contiene 20 milioni di interi da ordinare. Gli interi sono scritti di seguito, ciascuno su una riga. *Gli interi variano su un range molto ampio* (interi a 32 bit potrebbero non essere in grado di rappresentare adeguatamente i valori contenuti nel file).
 
 Implementare un'applicazione che, usando ciascuno degli algoritmi di ordinamento offerti dalla libreria, ordina gli interi contenuti nel file `integers.txt` in base a un criterio di ordinamento fornito in input (i possibili criteri di ordinamento non sono noti a priori: ad esempio, oltre agli usuali ordinamenti crescente e decrescente, potrebbero esserci ordinamenti basati sul numero di cifre nella rappresentazione decimale o binaria degli interi, ecc.).
 
@@ -106,7 +110,7 @@ Il file `sums.txt` che potete trovare seguendo il path
 
     /usr/NFS/Linux/labalgoritmi/datasets/
 
-(in laboratorio von Neumann, selezionare il disco Y) contiene 1000 interi. Gli interi sono scritti di seguito, ciascuno su una riga.
+(in laboratorio von Neumann, selezionare il disco Y) contiene 100 interi. Gli interi sono scritti di seguito, ciascuno su una riga.
 
 Come esempio di uso della funzione, implementare un'applicazione che carica in un array A gli interi contenuti nel file `integers.txt` e, per ciascun intero N contenuto nel file `sums.txt`, verifica se esso è la somma di due elementi contenuti in A.
 
@@ -154,9 +158,9 @@ Il file `dictionary.txt` che potete trovare seguendo il path
 
 (in laboratorio von Neumann, selezionare il disco Y) contiene l'elenco (di una parte significativa) delle parole italiane. Le parole sono scritte di seguito, ciascuna su una riga.
 
-Il file `words.txt` contiene un elenco di parole italiane, eventualmente contenenti errori di battitura.
+Il file `correctme.txt` contiene una citazione di John Lennon. Il file contiene alcuni errori di battitura.
 
-Si implementi un'applicazione che usa le funzioni `edit_distance` e `edit_distance_dyn` per determinare, per ogni parola `w` in `words.txt`, le parole in `dictionary.txt` con edit distance minima da `w`. Si sperimenti il funzionamento dell'applicazione sia utilizzando `edit_distance` e `edit_distance_dyn` e si riporti in una breve relazione (circa una pagina) i risultati degli esperimenti.
+Si implementi un'applicazione che usa le funzioni `edit_distance` e `edit_distance_dyn` per determinare, per ogni parola `w` in `correctme.txt`, la lista di parole in `dictionary.txt` con edit distance minima da `w`. Si sperimenti il funzionamento dell'applicazione sia utilizzando `edit_distance` e `edit_distance_dyn` e si riporti in una breve relazione (circa una pagina) i risultati degli esperimenti.
 
 **TO BE CHANGED**:
 
