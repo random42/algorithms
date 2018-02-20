@@ -140,7 +140,7 @@ Si implementi una versione ricorsiva della funzione `edit_distance` basata sulle
 
 Si implementi una seconda versione `edit_distance_dyn` della funzione, adottando una strategia di programmazione dinamica.
 
-**Nota**: Le definizioni sopra riportate non corrispondono al modo usuale di definire la distanza di edit, ne' si prestano a una implementazione iterativa particolarmente efficente. Sono del tutto sufficienti però per risolvere l'esercizio e sono quelle su cui dovrete basare la vostra risposta.
+**Nota**: Le definizioni sopra riportate non corrispondono al modo usuale di definire la distanza di edit, né si prestano a una implementazione iterativa particolarmente efficiente. Sono del tutto sufficienti però per risolvere l'esercizio e sono quelle su cui dovrete basare la vostra risposta.
 
 
 ### Unit Testing
