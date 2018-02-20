@@ -160,12 +160,7 @@ Il file `dictionary.txt` che potete trovare seguendo il path
 
 Il file `correctme.txt` contiene una citazione di John Lennon. Il file contiene alcuni errori di battitura.
 
-Si implementi un'applicazione che usa le funzioni `edit_distance` e `edit_distance_dyn` per determinare, per ogni parola `w` in `correctme.txt`, la lista di parole in `dictionary.txt` con edit distance minima da `w`. Si sperimenti il funzionamento dell'applicazione sia utilizzando `edit_distance` e `edit_distance_dyn` e si riporti in una breve relazione (circa una pagina) i risultati degli esperimenti.
-
-**TO BE CHANGED**:
-
-1) la versione non dinamica ha costo esponenziale e rischia di non terminare in tempi ragionevoli per parole più lunghe di pochi caratteri.
-2) meglio proporre un file da "correggere" contenente "poco" testo.
+Si implementi un'applicazione che usa la funzione `edit_distance_dyn` per determinare, per ogni parola `w` in `correctme.txt`, la lista di parole in `dictionary.txt` con edit distance minima da `w`. Si sperimenti il funzionamento dell'applicazione e si riporti in una breve relazione (circa una pagina) i risultati degli esperimenti.
 
 **I FILE `dictionary.txt` E `words.txt` NON DEVONO ESSERE OGGETTO DI COMMIT SU GIT!**
 
