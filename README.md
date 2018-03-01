@@ -28,6 +28,7 @@ Le regole si applicano al *singolo* studente. Ad esempio, si consideri un gruppo
 - il progetto di laboratorio del gruppo deve essere consegnato entro il 13 giugno 2018
 - il solo studente X deve sostenere la prova orale del 18 giugno 2018 procedendo come indicato nell'esempio, mentre Y e Z sosterranno la discussione quando avranno superato la prova scritta.
 
+*Validità del progetto di laboratorio:* il progetto di laboratorio resta valido dalla data della consegna fino all'ultimo appello relativo a questa edizione - 2017/2018 - del corso (e non oltre!)
 
 
 ## Uso di [Git](http://git-scm.com)
