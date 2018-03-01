@@ -1,4 +1,4 @@
-# Laboratorio per il corso di Algoritmi e Strutture Dati
+# Laboratorio per il corso di Algoritmi e Strutture Dati: informazioni generali
 
 Il presente documento riporta i testi degli esercizi da svolgere e consegnare al fine di poter sostenere la prova di laboratorio per il corso di Algoritmi e Strutture Dati, preceduti da alcune indicazioni e suggerimenti relativi allo svolgimento degli stessi.
 
@@ -14,6 +14,21 @@ Gli esercizi sono divisi in una parte di sviluppo di una struttura dati e/o di u
 In alcuni esercizi si ribadisce la necessità di implementare una versione generale della libreria. Ciò non vuol dire che dove questo non sia specificato esplicitamente sia lecita una implementazione meno generale.
 
 *Durante l'esame sarete chiamati a difendere la generalità dell'implmentazione proposta.*
+
+## Regole per l'esame
+
+Il progetto di laboratorio va consegnato mediante Git (vedi sezione successiva) *entro e non oltre* la data della prova scritta che si intende sostenere. E' vietato sostenere la prova scritta in caso di mancata consegna del progetto di laboratorio. In caso di superamento della prova scritta, la prova orale (discussione del laboratorio) va sostenuta, previa prenotazione mediante apposita procedura che sarà messa a disposizione sulla pagina [*i-learn del corso*](http://informatica.i-learn.unito.it/course/view.php?id=1526), nell'*appello orale immediatamente successivo alla prova scritta superata*.
+
+Esempio:
+- lo studente X vuole sostenere la prova scritta del 14 giugno 2018
+- lo studente X (e il suo gruppo) deve consegnare il progetto di laboratorio entro il 13 giugno 2018
+- se lo studente X supera la prova scritta del 14 giugno 2018 *deve* iscriversi all'appello orale immediatamente successivo del 18 giugno 2018 e prenotarsi su [*i-learn*](http://informatica.i-learn.unito.it/course/view.php?id=1526) in uno degli slot messi a disposizione dal docente del turno di appartenenza.
+
+Le regole si applicano al *singolo* studente. Ad esempio, si consideri un gruppo di laboratorio costituito dagli studenti X, Y e Z, e si supponga che i soli X e Y sostengano la prova scritta del 14 giugno 2018, X con successo, mentre Y con esito insufficiente. Devono essere rispettate le seguenti condizioni:
+- il progetto di laboratorio del gruppo deve essere consegnato entro il 13 giugno 2018
+- il solo studente X deve sostenere la prova orale del 18 giugno 2018 procedendo come indicato nell'esempio, mentre Y e Z sosterranno la discussione quando avranno superato la prova scritta.
+
+
 
 ## Uso di [Git](http://git-scm.com)
 
@@ -72,7 +87,7 @@ ben testato.
 - i file vanno salvati in formato UTF8.
 
 
-## Esercizio 1
+# Esercizio 1
 
 Implementare una libreria che offre i seguenti algoritmi di ordinamento:
 
@@ -81,13 +96,13 @@ Implementare una libreria che offre i seguenti algoritmi di ordinamento:
 
 Ogni algoritmo va implementato in modo tale da poter essere utilizzato su un generico tipo ```T```. L'implementazione degli algoritmi deve permettere di specificare il criterio secondo cui ordinare i dati. *Suggerimento*: Usare l'interfaccia java.util.Comparator (o, nel caso di una implementazione C, un puntatore a funzione).
 
-### Unit testing
+## Unit testing
 
 Implementare gli unit-test degli algoritmi secondo le indicazioni suggerite nel documento [Unit Testing](UnitTesting.md).
 
-### Uso della libreria di ordinamento implementata
+## Uso della libreria di ordinamento implementata
 
-#### Ordinamento di un array di interi
+### Ordinamento di un array di interi
 
 Il file `integers.txt` che potete trovare seguendo il path
 
@@ -102,7 +117,7 @@ Si misurino i tempi di risposta e si crei una breve relazione (circa una pagina)
 
 **IL FILE `integers.txt` NON DEVE ESSERE OGGETTO DI COMMIT SU GIT!**
 
-#### Implementazione di un test su array di interi
+### Implementazione di un test su array di interi
 
 Implementare una funzione che accetta in input un intero N e un qualunque array A di interi e che verifica se A contiene due interi la cui somma è esattamente N. La funzione DEVE avere complessità $\Theta(KlogK)$ sul numero K di elementi dell'array A.
 
@@ -118,7 +133,7 @@ Si aggiunga alla relazione scritta per l'esercizio precedente un paragrafo in cu
 
 **IL FILE `sums.txt` NON DEVE ESSERE OGGETTO DI COMMIT SU GIT!**
 
-## Esercizio 2
+# Esercizio 2
 
 Si consideri il problema  di determinare la distanza di edit tra due stringhe (Edit distance): date due stringhe s1 e s2, non necessariamente della stessa lunghezza, determinare il minimo numero di operazioni necessarie per trasformare la stringa s2 in s1. Si assuma che le operazioni disponibili siano soltanto due: cancellazione e inserimento di un carattere. Esempi:
 
@@ -147,11 +162,11 @@ Si implementi una seconda versione `edit_distance_dyn` della funzione, adottando
 **Nota**: Le definizioni sopra riportate non corrispondono al modo usuale di definire la distanza di edit, né si prestano a una implementazione iterativa particolarmente efficiente. Sono del tutto sufficienti però per risolvere l'esercizio e sono quelle su cui dovrete basare la vostra risposta.
 
 
-### Unit Testing
+## Unit Testing
 
 Implementare gli unit-test degli algoritmi secondo le indicazioni suggerite nel documento [Unit Testing](UnitTesting.md).
 
-### Uso delle funzioni implementate
+## Uso delle funzioni implementate
 Il file `dictionary.txt` che potete trovare seguendo il path
 
     /usr/NFS/Linux/labalgoritmi/datasets/
@@ -164,35 +179,35 @@ Si implementi un'applicazione che usa la funzione `edit_distance_dyn` per determ
 
 **I FILE `dictionary.txt` E `words.txt` NON DEVONO ESSERE OGGETTO DI COMMIT SU GIT!**
 
-## Esercizio 3
+# Esercizio 3
 
 Si implementi la struttura dati Coda con priorità.
 
 La struttura dati deve gestire tipi generici e consentire un numero qualunque e non noto a priori di elementi.
 
 
-### Unit Testing
+## Unit Testing
 
 Implementare gli unit-test degli algoritmi secondo le indicazioni suggerite nel documento [Unit Testing](UnitTesting.md).
 
 
-## Esercizio 4
+# Esercizio 4
 
 Si implementi una libreria che realizza la struttura dati Grafo in modo che sia ottimale per dati sparsi (IMPORTANTE: le scelte implementative che farete dovranno essere giustificate in relazione alle nozioni presentate durante le lezioni in aula). La struttura deve consentire di rappresentare sia grafi diretti che grafi non diretti (suggerimento: un grafo non diretto può essere rappresentato usando un'implementazione per grafi diretti nel seguente modo: per ogni arco `(a,b)`, etichettato `w`, presente nel grafo, è presente nel grafo anche l'arco `(b,a)`, etichettato `w`. Ovviamente, il grafo dovrà mantenere l'informazione che specifica se esso è un grafo diretto o non diretto.).
 
 Oltre alle funzioni essenziali per la struttura dati Grafo, si implementi nella libreria anche una funzione che restituisce il peso del grafo (se il grafo non è pesato, la funzione può terminare con un errore).
 
-### Unit Testing
+## Unit Testing
 
 Implementare gli unit-test degli algoritmi secondo le indicazioni suggerite nel documento [Unit Testing](UnitTesting.md).
 
-### Uso della libreria che implementa la struttura dati Grafo
+## Uso della libreria che implementa la struttura dati Grafo
 
 Si implementi l'algoritmo di Prim per la determinazione della minima foresta  ricoprente di un grafo. L'implementazione dell'algoritmo di Prim dovrà utilizzare la struttura dati Coda con priorità nell'esercizio precedente.
 
 N.B. Nel caso in cui il grafo sia costituito da una sola componente connessa, l'algoritmo restituirà un albero; nel caso in cui, invece, vi siano più componenti connesse, l'algoritmo restituirà una foresta costituita dai minimi alberi ricoprenti di ciascuna componente connessa.
 
-### Uso delle librerie che implementano la struttura dati Grafo e l'algoritmo di Prim
+## Uso delle librerie che implementano la struttura dati Grafo e l'algoritmo di Prim
 
 La struttura dati e l'algoritmo di Prim dovranno essere utilizzati con i dati contenuti nel file `italian_dist_graph.csv`.
 
@@ -219,6 +234,6 @@ Ogni record contiene i seguenti dati:
 
 
 
-### Controlli
+## Controlli
 
 Un'implementazione corretta dell'algoritmo di Prim, eseguita sui dati contenuti nel file `italian_dist_graph.csv`, dovrebbe determinare una minima foresta ricoprente con 18.640 nodi, 18.637 archi (non orientati) e di peso complessivo di circa 89.939,913 Km.
