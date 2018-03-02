@@ -26,7 +26,7 @@ Esempio:
 
 Le regole si applicano al *singolo* studente. Ad esempio, si consideri un gruppo di laboratorio costituito dagli studenti X, Y e Z, e si supponga che i soli X e Y sostengano la prova scritta del 14 giugno 2018, X con successo, mentre Y con esito insufficiente. Devono essere rispettate le seguenti condizioni:
 - il progetto di laboratorio del gruppo deve essere aggiornato alla versione che si intende presentare;
-- il solo studente X deve sostenere la prova orale del 18 giugno 2018 procedendo come indicato nell'esempio, mentre Y e Z sosterranno la discussione quando avranno superato la prova scritta. Gli studenti Y e Z discuteranno la stessa versione del progetto di laboratorio che ha discusso lo studente X (i.e., eventuali modifiche al laboratorio succesive alla discussione di X **non** verranno prese in considerazione).
+- il solo studente X deve sostenere la prova orale del 18 giugno 2018 procedendo come indicato nell'esempio, mentre Y e Z sosterranno la discussione quando avranno superato la prova scritta. Gli studenti Y e Z dovranno, di norma, discutere la stessa versione del progetto di laboratorio che ha discusso lo studente X (i.e., eventuali modifiche al laboratorio succesive alla discussione di X dovranno essere *debitammente documentate (i.e., il log delle modifiche dovrà comparire su GitLab) e motivate)*.
 
 *Validità del progetto di laboratorio:* le specifiche per il progetto di laboratorio descritte in questo documento resteranno valide fino a Gennaio 2019 (i.e, all’ultimo appello dell’ultima sessione relativa al corrente anno accademico) e non oltre!”
 
