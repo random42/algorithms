@@ -2,7 +2,7 @@
 
 Il presente documento riporta i testi degli esercizi da svolgere e consegnare al fine di poter sostenere la prova di laboratorio per il corso di Algoritmi e Strutture Dati, preceduti da alcune indicazioni e suggerimenti relativi allo svolgimento degli stessi.
 
-**Nota**: il presente documento contiene alcune formule descritte usando la sintassi [\LaTeX](https://www.latex-project.org). È possibile convertirlo in un pdf di più facile lettura usando l'utilty [pandoc](http://pandoc.org):
+**Nota**: il presente documento contiene alcune formule descritte usando la sintassi [\LaTeX](https://www.latex-project.org). È possibile convertirlo in un pdf di più facile lettura usando l'utilty [pandoc](http://pandoc.org). Da riga di comando (Unix):
 
     pandoc README.md -o README.pdf
 
@@ -13,22 +13,23 @@ Gli esercizi sono divisi in una parte di sviluppo di una struttura dati e/o di u
 
 In alcuni esercizi si ribadisce la necessità di implementare una versione generale della libreria. Ciò non vuol dire che dove questo non sia specificato esplicitamente sia lecita una implementazione meno generale.
 
-*Durante l'esame sarete chiamati a difendere la generalità dell'implmentazione proposta.*
+*Durante l'esame sarete chiamati a difendere la generalità dell'implementazione proposta.*
 
 ## Regole per l'esame
 
 Il progetto di laboratorio va consegnato mediante Git (vedi sezione successiva) *entro e non oltre* la data della prova scritta che si intende sostenere. E' vietato sostenere la prova scritta in caso di mancata consegna del progetto di laboratorio. In caso di superamento della prova scritta, la prova orale (discussione del laboratorio) va sostenuta, previa prenotazione mediante apposita procedura che sarà messa a disposizione sulla pagina [*i-learn del corso*](http://informatica.i-learn.unito.it/course/view.php?id=1526), nell'*appello orale immediatamente successivo alla prova scritta superata*.
 
 Esempio:
-- lo studente X vuole sostenere la prova scritta del 14 giugno 2018
-- lo studente X (e il suo gruppo) deve consegnare il progetto di laboratorio entro il 13 giugno 2018
+- lo studente X sostiene la prova scritta del 14 giugno 2018
+- lo studente X deve assicurarsi che il progetto su [GitLab](http://gitlab2.educ.di.unito.it) sia aggiornato alla versione che vuole presentare al docente di laboratorio;
 - se lo studente X supera la prova scritta del 14 giugno 2018 *deve* iscriversi all'appello orale immediatamente successivo del 18 giugno 2018 e prenotarsi su [*i-learn*](http://informatica.i-learn.unito.it/course/view.php?id=1526) in uno degli slot messi a disposizione dal docente del turno di appartenenza.
 
 Le regole si applicano al *singolo* studente. Ad esempio, si consideri un gruppo di laboratorio costituito dagli studenti X, Y e Z, e si supponga che i soli X e Y sostengano la prova scritta del 14 giugno 2018, X con successo, mentre Y con esito insufficiente. Devono essere rispettate le seguenti condizioni:
-- il progetto di laboratorio del gruppo deve essere consegnato entro il 13 giugno 2018
-- il solo studente X deve sostenere la prova orale del 18 giugno 2018 procedendo come indicato nell'esempio, mentre Y e Z sosterranno la discussione quando avranno superato la prova scritta.
+- il progetto di laboratorio del gruppo deve essere aggiornato alla versione che si intende presentare;
+- il solo studente X deve sostenere la prova orale del 18 giugno 2018 procedendo come indicato nell'esempio, mentre Y e Z sosterranno la discussione quando avranno superato la prova scritta. Gli studenti Y e Z discuteranno la stessa versione del progetto di laboratorio che ha discusso lo studente X (i.e., eventuali modifiche al laboratorio succesive alla discussione di X **non** verranno prese in considerazione).
 
-*Validità del progetto di laboratorio:* il progetto di laboratorio resta valido dalla data della consegna fino all'ultimo appello relativo a questa edizione - 2017/2018 - del corso (e non oltre!)
+*Validità del progetto di laboratorio:* le specifiche per il progetto di laboratorio descritte in questo documento resteranno valide fino a Gennaio 2019 (i.e, all’ultimo appello dell’ultima sessione relativa al corrente anno accademico) e non oltre!”
+
 
 
 ## Uso di [Git](http://git-scm.com)
