@@ -146,8 +146,8 @@ Si consideri il problema  di determinare la distanza di edit tra due stringhe (E
 
 Si implementi una versione ricorsiva della funzione `edit_distance` basata sulle seguenti osservazioni (indichiamo con $|s|$ la lunghezza di $s$ e con $\mathrm{rest}(s)$ la sottostringa di $s$ ottenuta ignorando il primo carattere di $s$):
 
-- se $|s1|$ = 0, allora $\mathrm{edit_distance}(s1,s2) = |s2|$;
-- se $|s2|$ = 0, allora $\mathrm{edit_distance}(s1,s2) = |s1|$;
+- se $|s1|$ = 0, allora $\mathrm{edit\_distance}(s1,s2) = |s2|$;
+- se $|s2|$ = 0, allora $\mathrm{edit\_distance}(s1,s2) = |s1|$;
 - altrimenti, siano:
   - $d_{\mathrm{no-op}} = \
       \begin{cases} \
@@ -157,7 +157,7 @@ Si implementi una versione ricorsiva della funzione `edit_distance` basata sulle
   - $d_{\mathrm{canc}} = 1+ \mathrm{edit\_distance}(s1,\mathrm{rest}(s2))$
   - $d_{\mathrm{ins}} = 1+ \mathrm{edit\_distance}(\mathrm{rest}(s1),s2)$
 
-  Si ha: $\mathrm{edit\_distance}(s1,s2) = \min\{d_{\mathrm{noop}},d_{\mathrm{canc}},d_{\mathrm{ins}}\}$
+  Si ha: $\mathrm{edit\_distance}(s1,s2) = \min\{d_{\mathrm{no-op}},d_{\mathrm{canc}},d_{\mathrm{ins}}\}$
 
 Si implementi una seconda versione `edit_distance_dyn` della funzione, adottando una strategia di programmazione dinamica.
 
