@@ -179,7 +179,7 @@ Il file `correctme.txt` contiene una citazione di John Lennon. Il file contiene 
 
 Si implementi un'applicazione che usa la funzione `edit_distance_dyn` per determinare, per ogni parola `w` in `correctme.txt`, la lista di parole in `dictionary.txt` con edit distance minima da `w`. Si sperimenti il funzionamento dell'applicazione e si riporti in una breve relazione (circa una pagina) i risultati degli esperimenti.
 
-**I FILE `dictionary.txt` E `words.txt` NON DEVONO ESSERE OGGETTO DI COMMIT SU GIT!**
+**I FILE `dictionary.txt` E `correctme.txt` NON DEVONO ESSERE OGGETTO DI COMMIT SU GIT!**
 
 # Esercizio 3
 
