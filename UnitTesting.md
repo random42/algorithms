@@ -84,7 +84,14 @@ automaticamente e non richiedere attenzione da parte dell'utente.
 
 ## Unit testing in Java
 
-La libreria di unit testing più usata in ambito Java è JUnit. Un test in JUnit
+La libreria di unit testing più usata in ambito Java è JUnit.
+
+La versione più recente di JUnit è JUnit 5. Per semplicità, nell'esecuzione di
+questo laboratorio, suggeriamo l'uso della versione JUnit 4 immediatamente precedente.
+
+Nel seguito, faremo riferimento a JUnit 4.
+
+Un test in JUnit
 è un metodo marcato con l'annotazione ```@Test```. Tali metodi possono usare
 un certo numero di funzioni messe a disposizione dalla libreria per verificare
 la correttezza del programma. Ad esempio:
@@ -117,18 +124,12 @@ di test avesse memorizzato i dati in qualche variabile di istanza (o di classe).
 
 ### Compilazione ed esecuzione
 
+Potete trovare le librerie JUnit (junit e hamcrest-core) nella cartella Java_Junit
+di questo repository. In alternativa, potete scaricarle dal sito di JUnit 4 (https://junit.org/junit4/),
+dove trovate anche altre informazioni interessanti.
+
 Al fine di poter compilare ed eseguire le classi di test è necessario aggiungere
 le librerie JUnit al classpath di Java.
-
-Per recuperare le librerie in quesitone (junit e hamcrest-core) potete procedere
-in due modi:
-
-1) scaricare i file dal sito di JUnit salvandoli in una vostra area locale (
-  notate che tali file *non* dovrebbero essere aggiunti al repository);
-
-2) usare i file messi a disposizione dai docenti nella directory labalgoritmi/lib
-(radicata in /usr/NFS/Linux o nel disco Y: a seconda che si acceda via unix o
-via windows)
 
 Esempio (unix):
 
@@ -147,7 +148,7 @@ java org.junit.runner.JUnitCore <nome classe da eseguire>
 Dove <nome classe da eseguire> è la classe che contiene i test. Il nome deve
 essere comprensivo del path (i.e., del package) alla classe stessa.
 
-## Unit test in C
+## Unit testing in C
 
 Purtroppo nel caso del C non c'è una libreria che possa essere definita
 "standard" e in genere usare tali librerie richiede l'installazione di software
@@ -155,7 +156,10 @@ aggiuntivo. Date queste difficoltà è ammesso utilizzare un programma ad-hoc pe
 effettuare il test, a patto che si scrivano le funzioni di test prestando
 attenzione ai punti indicati sopra. Chi volesse utilizzare qualche libreria è
 libero di farlo, ma sarà sua responsabilità installare e utilizzare
-correttamente la libreria.
+correttamente la libreria. Una possibile libreria (che, tuttavia, non rappresenta
+uno standard) è Unity. Per vostra comodità, potete trovare Unity nella cartella
+C_Unity_and_Makefile/src di questo repository. L'uso di Unity in questo
+laboratorio è comunque facoltativo.
 
 Esempio di programma di test in C:
 
