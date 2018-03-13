@@ -124,7 +124,7 @@ di test avesse memorizzato i dati in qualche variabile di istanza (o di classe).
 
 ### Compilazione ed esecuzione
 
-Potete trovare le librerie JUnit (junit e hamcrest-core) nella cartella Java_Junit
+Potete trovare le librerie JUnit (junit e hamcrest-core) nella cartella `Resources/Java/JUnit`
 di questo repository. In alternativa, potete scaricarle dal sito di JUnit 4 (https://junit.org/junit4/),
 dove trovate anche altre informazioni interessanti.
 
@@ -158,7 +158,7 @@ attenzione ai punti indicati sopra. Chi volesse utilizzare qualche libreria è
 libero di farlo, ma sarà sua responsabilità installare e utilizzare
 correttamente la libreria. Una possibile libreria (che, tuttavia, non rappresenta
 uno standard) è Unity. Per vostra comodità, potete trovare Unity nella cartella
-C_Unity_and_Makefile/src di questo repository. L'uso di Unity in questo
+`Resources/C/Unity` di questo repository. L'uso di Unity in questo
 laboratorio è comunque facoltativo.
 
 Esempio di programma di test in C:
