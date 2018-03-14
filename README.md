@@ -112,7 +112,7 @@ Il file `integers.txt` che potete trovare seguendo il path
 
 (in laboratorio von Neumann, selezionare il disco Y) contiene 20 milioni di interi da ordinare. Gli interi sono scritti di seguito, ciascuno su una riga. *Gli interi variano su un range molto ampio* (interi a 32 bit potrebbero non essere in grado di rappresentare adeguatamente i valori contenuti nel file).
 
-Implementare un'applicazione che, usando ciascuno degli algoritmi di ordinamento offerti dalla libreria, ordina gli interi contenuti nel file `integers.txt` in base a un criterio di ordinamento fornito in input (i possibili criteri di ordinamento non sono noti a priori: ad esempio, oltre agli usuali ordinamenti crescente e decrescente, potrebbero esserci ordinamenti basati sul numero di cifre nella rappresentazione decimale o binaria degli interi, ecc.).
+Implementare un'applicazione che, usando ciascuno degli algoritmi di ordinamento offerti dalla libreria, ordina in modo crescente gli interi contenuti nel file `integers.txt`.
 
 Si misurino i tempi di risposta e si crei una breve relazione (circa una pagina) in cui si riportano i risultati ottenuti insieme a un loro commento. Nel caso l'ordinamento si  protragga per più di 10 minuti potete interrompere l'esecuzione e riportare un fallimento dell'operazione. I risultati sono quelli che vi sareste aspettati? Se sì, perché? Se no, fate delle ipotesi circa il motivo per cui gli algoritmi non funzionano come vi aspettate, verificatele e riportate quanto scoperto nella relazione.
 
