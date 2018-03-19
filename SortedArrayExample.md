@@ -10,12 +10,10 @@ Implementare gli unit-test degli algoritmi secondo le indicazioni suggerite nel 
 
 ## Implementazione
 
-Il file `integers.txt` che potete trovare seguendo il path
+Il file ordered_array_sample_file.csv, che potete trovare seguendo il path
 
     /usr/NFS/Linux/labalgoritmi/datasets/
 
-(in laboratorio von Neumann, selezionare il disco Y) contiene 20 milioni di interi da ordinare. Gli interi sono scritti di seguito, ciascuno su una riga. *Gli interi variano su un range molto ampio* (interi a 32 bit potrebbero non essere in grado di rappresentare adeguatamente i valori contenuti nel file).
+(in laboratorio von Neumann, selezionare il disco Y) contiene 23 record del tipo <chiave,valore>, dove la chiave è una stringa e il valore è un intero.  Il formato è un CSV standard: i campi sono separati da virgole; i record sono separati dal carattere di fine riga (\n).
 
-Implementare un'applicazione che, usando un `SortedArray` ordini i primi 100'000 interi contenuti nel file `integers.txt` in base a un criterio di ordinamento fornito in input (i possibili criteri di ordinamento non sono noti a priori: ad esempio, oltre agli usuali ordinamenti crescente e decrescente, potrebbero esserci ordinamenti basati sul numero di cifre nella rappresentazione decimale o binaria degli interi, ecc.).
-
-Si misurino i tempi di risposta e si crei una breve relazione (circa una pagina) in cui si riportano i risultati ottenuti insieme a un loro commento.
+Implementare un'applicazione che, usando un SortedArray, carichi i record nella struttura dati una prima volta mantenendoli ordinati secondo l'ordinamento crescente del campo intero e una seconda volta secondo l'ordinamento lessicografico crescente del campo stringa.
