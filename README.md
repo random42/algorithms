@@ -127,7 +127,7 @@ Il file `sums.txt` che potete trovare seguendo il path
 
     /usr/NFS/Linux/labalgoritmi/datasets/
 
-(in laboratorio von Neumann, selezionare il disco Y) contiene 100 interi. Gli interi sono scritti di seguito, ciascuno su una riga.
+(in laboratorio von Neumann, selezionare il disco Y) contiene alcuni interi. Gli interi sono scritti di seguito, ciascuno su una riga.
 
 Come esempio di uso della funzione, implementare un'applicazione che carica in un array A gli interi contenuti nel file `integers.txt` e, per ciascun intero N contenuto nel file `sums.txt`, verifica se esso è la somma di due elementi contenuti in A.
 
