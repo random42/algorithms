@@ -1,13 +1,8 @@
+package uno;
+
 import java.util.*;
 
-public class EsercizioUno {
-
-  // public static void main(String[] args) {
-  //   List<Integer> list = Arrays.asList(10,2,34,23,1,-9,12,51);
-  //   List<Integer> sorted = Arrays.asList(-9,1,2,10,12,23,34,51);
-  //   ArrayList<Integer> array = new ArrayList<Integer>(list);
-  //   EsercizioUno.mergeSort(array);
-  // }
+public class Sort {
 
   public static <T extends Comparable<T>> void insertionSort(ArrayList<T> array) {
     if (array == null || array.size() <= 1) {
@@ -26,7 +21,7 @@ public class EsercizioUno {
     }
   }
 
-  public static <T extends Comparable<T>> void mergeSort(ArrayList<T> array) {
+  public static <T extends Comparable<T>> void mergeSortIterative(ArrayList<T> array) {
     if (array == null || array.size() == 0) {
       return;
     }
@@ -51,6 +46,24 @@ public class EsercizioUno {
         right = length;
         left = right - subLength;
       }
+    }
+  }
+
+  public static <T extends Comparable<T>> void mergeSortRecursive(ArrayList<T> array) {
+    if (array == null) {
+      return;
+    } else {
+      mergeSortRecursive(array,0,array.size());
+    }
+  }
+
+  protected static <T extends Comparable<T>> void mergeSortRecursive(ArrayList<T> array, int left, int right) {
+    if (left + 1 < right) {
+      int center = (right + left) / 2;
+      mergeSortRecursive(array,left,center);
+      mergeSortRecursive(array,center,right);
+      merge(array,left,right,center);
+      //System.out.println(array);
     }
   }
 
