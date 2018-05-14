@@ -1,15 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include "edit_distance.h"
+#include "util.h"
 
-int min(int* array, int length) {
-  if (length < 1) return 0;
-  int m = array[0];
-  for (int i = 1;i < length;i++) {
-    if (array[i] < m) {
-      m = array[i];
-    }
-  }
-  return m;
+char* rest(char* s1) {
+  return s1 + 1;
 }
 
 int edit_distance(char* s1, char* s2) {
@@ -20,16 +16,30 @@ int edit_distance(char* s1, char* s2) {
     return strlen(s1);
   }
   else {
-    return 0;
+    int distances[3];
+    distances[0] = s1[0] == s2[0] ? edit_distance(rest(s1),rest(s2)) : 1 << 30;
+    distances[1] = 1 + edit_distance(s1, rest(s2));
+    distances[2] = 1 + edit_distance(rest(s1), s2);
+    return min(distances, 3);
   }
 }
 
-char* rest(char* s1) {
-  return s1 + 1;
-}
+// int edit_distance_dyn(char* s1, char* s2) {
+//   int match = 0;
+//   int len1 = strlen(s1);
+//   int len2 = strlen(s2);
+//   int i = 0;
+//   int j = 0;
+//   while (match < len1 && match < len2) {
+//     if (s1[i] == s1[j]) {
+//
+//     }
+//   }
+// }
 
 int main() {
-  int s1[] = {-1233,39344,-434294};
+  char* s1 = "tassa";
+  char* s2 = "passato";
   //char* s2 = "asdf";
-  printf("%d\n",min(s1,3));
+  printf("%d\n",edit_distance(s1,s2));
 }

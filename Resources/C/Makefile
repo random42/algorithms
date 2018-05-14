@@ -24,7 +24,7 @@ dirs:
 build/%.o: src/%.c $(COMMON_DEPS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-es_due: build/edit_distance.o
+es_due: build/edit_distance.o build/util.o
 	$(CC) -o bin/$@ $^
 
 # lista dei target da eseguire sempre
