@@ -1,25 +1,17 @@
-
-# lista dei target da eseguire sempre
-all: tests exec
-
-# compila (grazie alla dipendenza) e esegue i test
-tests: bin/ordered_array_tests
-	bin/ordered_array_tests
-
-#  compila (grazie alla dipendenza) e esegue ordered_array
-exec: bin/ordered_array
-	bin/ordered_array ../ordered_array_sample_file.csv
-
 # Flags per il compilatore -- su gcc -Weverything non esiste
 #    sostituire con -Wall -Wpedantic
-CFLAGS = -g -Weverything -Wno-padded -Werror
+CFLAGS = -g -Wall -Wpedantic -Wno-padded -Werror
 
+CC = gcc
 # Lista degli header files
 INCLUDES = src/*.h
 
 # tutti i target vanno ricompilati se cambiano gli header o
 # questo Makefile
 COMMON_DEPS = $(INCLUDES) Makefile
+
+dirs:
+	mkdir -p bin build
 
 # regola per compilare un .c in un .o
 # viene applicata ogni volta che una dipendenza richiede di compilare un file in
@@ -32,11 +24,11 @@ COMMON_DEPS = $(INCLUDES) Makefile
 build/%.o: src/%.c $(COMMON_DEPS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-bin/ordered_array: build/ordered_array.o build/ordered_array_main.o $(COMMON_DEPS)
-	$(CC) -o bin/ordered_array build/ordered_array.o build/ordered_array_main.o
+es_due: build/edit_distance.o
+	$(CC) -o bin/$@ $^
 
-bin/ordered_array_tests: build/ordered_array_tests.o build/ordered_array.o build/unity.o $(COMMON_DEPS)
-	$(CC) -o bin/ordered_array_tests  build/ordered_array_tests.o build/ordered_array.o build/unity.o
+# lista dei target da eseguire sempre
+all: dirs es_due
 
 clean:
 	rm -f build/* bin/*
