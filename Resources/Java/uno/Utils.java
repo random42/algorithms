@@ -1,9 +1,7 @@
 package uno;
 
 import java.util.*;
-
-public class Sort {
-
+public class Utils {
   public static <T extends Comparable<T>> void insertionSort(ArrayList<T> array) {
     if (array == null || array.size() <= 1) {
       return;
@@ -63,7 +61,6 @@ public class Sort {
       mergeSortRecursive(array,left,center);
       mergeSortRecursive(array,center,right);
       merge(array,left,right,center);
-      //System.out.println(array);
     }
   }
 
@@ -71,25 +68,47 @@ public class Sort {
     ArrayList<T> temp = new ArrayList<T>(array.subList(left,right));
     center -= left;
     int length = right - left;
-    int firstCursor = 0;
-    int secCursor = center;
-    for (int i = left; i < right;i++) {
-      // if cursors are valid compare
-      if (firstCursor < center && secCursor < length) {
-        if (temp.get(secCursor).compareTo(temp.get(firstCursor)) > 0) {
-          array.set(i, temp.get(firstCursor++));
-        } else {
-          array.set(i, temp.get(secCursor++));
-        }
-      }
-      // else use valid cursor
-      else {
-        if (firstCursor == center) {
-          array.set(i, temp.get(secCursor++));
-        } else {
-          array.set(i, temp.get(firstCursor++));
-        }
+    int firstHalf = 0;
+    int secHalf = center;
+    int i = left;
+    while (firstHalf < center && secHalf < length) {
+      if (temp.get(secHalf).compareTo(temp.get(firstHalf)) > 0) {
+        array.set(i++, temp.get(firstHalf++));
+      } else {
+        array.set(i++, temp.get(secHalf++));
       }
     }
+    while (firstHalf < center) {
+      array.set(i++, temp.get(firstHalf++));
+    }
+    while (secHalf < length) {
+      array.set(i++, temp.get(secHalf++));
+    }
+  }
+
+  public static boolean containsSum(ArrayList<Long> array, long sum) {
+    if (array == null || array.size() == 0) {
+      return false;
+    }
+    // sort array first
+    mergeSortRecursive(array);
+    int length = array.size();
+    int i = 0;
+    int j = length - 1;
+    long left = array.get(i);
+    long right = array.get(j);
+    boolean found = left + right == sum;
+    while (!found && i < j) {
+      if (left + right > sum) {
+        right = array.get(--j);
+      }
+      else if (left + right < sum) {
+        left = array.get(++i);
+      }
+      else {
+        found = true;
+      }
+    }
+    return found;
   }
 }
