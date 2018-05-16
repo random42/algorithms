@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include "util.h"
 
+
+
 void printArray(int* array, int length) {
   printf("[");
   int i = 0;
@@ -11,13 +13,21 @@ void printArray(int* array, int length) {
   printf("%d]\n", array[i]);
 }
 
-int min(int* array, int length) {
-  if (length < 1) return 0;
-  int m = array[0];
-  for (int i = 1;i < length;i++) {
-    if (array[i] < m) {
-      m = array[i];
+int min(int a, int b, int c) {
+  if (a <= b && a <= c) {
+    return a;
+  } else if (b <= a && b <= c) {
+    return b;
+  } else {
+    return c;
+  }
+}
+
+int stringIndexOf(char* string, char value) {
+  for (int i = 0; string[i] != '\0'; i++) {
+    if (string[i] == value) {
+      return i;
     }
   }
-  return m;
+  return -1;
 }

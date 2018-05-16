@@ -1,2 +1,4 @@
 datasets
 *.class
+Resources/C/bin
+Resources/C/build

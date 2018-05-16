@@ -10,6 +10,12 @@ INCLUDES = src/*.h
 # questo Makefile
 COMMON_DEPS = $(INCLUDES) Makefile
 
+# lista dei target da eseguire sempre
+all: dirs test
+
+test: build/tests.o build/edit_distance.o build/util.o
+	$(CC) -o bin/$@ $^
+
 dirs:
 	mkdir -p bin build
 
@@ -23,12 +29,6 @@ dirs:
 #   $< : la prima dipendenza della regola (in questo caso: src/<nomefile>.c)
 build/%.o: src/%.c $(COMMON_DEPS)
 	$(CC) $(CFLAGS) -c $< -o $@
-
-es_due: build/edit_distance.o build/util.o
-	$(CC) -o bin/$@ $^
-
-# lista dei target da eseguire sempre
-all: dirs es_due
 
 clean:
 	rm -f build/* bin/*
