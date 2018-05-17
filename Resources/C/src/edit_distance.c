@@ -5,6 +5,8 @@
 #include "edit_distance.h"
 #include "util.h"
 
+int DEBUG;
+
 char* rest(char* s1) {
   return s1 + 1;
 }
@@ -31,10 +33,7 @@ int edit_distance_dyn(char* s1, char* s2) {
   int n = strlen(s2);
   register int i, j;
   int distance;
-  int **d = (int**) malloc((m + 1) * sizeof(int*));
-
-  for (i = 0; i <= m; i++)
-    d[i] = (int*) malloc((n + 1) * sizeof(int));
+  int d[m+1][n+1];
 
   for (i = 0; i <= m; i++)
     d[i][0] = i;
@@ -63,9 +62,9 @@ int edit_distance_dyn(char* s1, char* s2) {
 
   distance = d[m][n];
 
-  for (i = 0; i <= m; i++)
-      free(d[i]);
-
-  free(d);
+  // for (i = 0; i <= m; i++)
+  //     free(d[i]);
+  //
+  // free(d);
   return distance;
 }

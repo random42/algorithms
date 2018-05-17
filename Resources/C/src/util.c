@@ -3,6 +3,9 @@
 #include "util.h"
 
 
+int isLetter(char a) {
+  return (a < 91 && a >= 65) || (a >= 97 && a < 123);
+}
 
 void printArray(int* array, int length) {
   printf("[");

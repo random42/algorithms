@@ -1,6 +1,6 @@
 # Flags per il compilatore -- su gcc -Weverything non esiste
 #    sostituire con -Wall -Wpedantic
-CFLAGS = -g -Wall -Wpedantic -Wno-padded -Werror
+CFLAGS = -g -Wall -Wpedantic -Wno-padded
 
 CC = gcc
 # Lista degli header files
@@ -11,7 +11,10 @@ INCLUDES = src/*.h
 COMMON_DEPS = $(INCLUDES) Makefile
 
 # lista dei target da eseguire sempre
-all: dirs test
+all: dirs test due
+
+due: build/due.o build/edit_distance.o build/util.o build/list.o
+	$(CC) -o bin/$@ $^
 
 test: build/tests.o build/edit_distance.o build/util.o
 	$(CC) -o bin/$@ $^
