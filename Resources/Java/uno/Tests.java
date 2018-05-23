@@ -4,7 +4,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import java.util.*;
 
-public class Tests {
+protected class Tests {
   @Test
   public void insertionSort() {
     List<Integer> list = Arrays.asList(1,5,7,2,4,800,35,12,3);
@@ -40,7 +40,7 @@ public class Tests {
     //System.out.println(a);
     assertEquals(a,sorted);
   }
-  
+
   @Test
   public void findSumsTest() {
     ArrayList<Long> array = new ArrayList<Long>(Arrays.asList(0l,2l,5l,6l,10l,12l,31l,90l,411l));

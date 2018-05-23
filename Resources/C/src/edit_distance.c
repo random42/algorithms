@@ -32,7 +32,6 @@ int edit_distance_dyn(char* s1, char* s2) {
   int m = strlen(s1);
   int n = strlen(s2);
   register int i, j;
-  int distance;
   int d[m+1][n+1];
 
   for (i = 0; i <= m; i++)
@@ -59,12 +58,6 @@ int edit_distance_dyn(char* s1, char* s2) {
       }
     }
   }
-
-  distance = d[m][n];
-
-  // for (i = 0; i <= m; i++)
-  //     free(d[i]);
-  //
-  // free(d);
-  return distance;
+  
+  return d[m][n];
 }

@@ -87,7 +87,7 @@ public class Utils {
   }
 
   public static boolean containsSum(ArrayList<Long> array, long sum) {
-    if (array == null || array.size() == 0) {
+    if (array == null || array.size() < 2) {
       return false;
     }
     // sort array first

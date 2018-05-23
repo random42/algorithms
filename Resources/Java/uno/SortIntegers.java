@@ -57,7 +57,7 @@ public class SortIntegers {
       File integers = new File(filePath);
       Scanner input = new Scanner(integers);
       ArrayList<Long> array = new ArrayList<Long>();
-      // setting delimiter between every integer
+      // setting delimiter char between every integer
       input.useDelimiter("\n");
       // creating array
       //int i = 0;
