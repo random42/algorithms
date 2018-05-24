@@ -1,13 +1,15 @@
 package tre;
 
+import java.util.*;
+
 public class Heap<T extends Comparable<T>> {
-  public T[] h;
+  public ArrayList<T> h;
   public int heapSize;
 
-  public static void exchange(T[] arr, int i, int j) {
-    T temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
+  public static <T extends Comparable<T>> void exchange(ArrayList<T> arr, int i, int j) {
+    T temp = arr.get(i);
+    arr.set(i, arr.get(j));
+    arr.set(j, temp);
   }
 
   public static void buildHeap() {
@@ -15,42 +17,45 @@ public class Heap<T extends Comparable<T>> {
   }
 
   public Heap() {
-    h = new int[10];
+    h = new ArrayList<T>();
     heapSize = 0;
   }
 
   public Heap(int size) {
-    h = new int[size];
+    h = new ArrayList<T>(size);
     heapSize = 0;
   }
 
-  public boolean isHeap() {
-    int depth = heapSize
+  // checks property H[i] >= H[left(i)], H[right(i)]
+  // and checks tree depth
+  protected boolean isHeap() {
+    if (heapSize == 0)
+      return true;
+    return isHeap(0);
   }
 
-  public void insert(int e) {
-    if (heapSize == h.length) return;
+  public void insert(T e) {
     int i = heapSize++;
-    h[i] = e;
-    while (i > 0 && h[parent(i)] < h[i]) {
+    h.add(i, e);
+    while (i > 0 && h.get(parent(i)).compareTo(h.get(i)) < 0) {
       exchange(h, i, parent(i));
       i = parent(i);
     }
   }
 
-  public int extractMaximum() {
+  public T extractMaximum() {
     if (heapSize == 0)
-      return 0;
-    int r = h[0];
-    h[0] = h[--heapSize];
+      return null;
+    T r = h.get(0);
+    h.set(0, h.get(--heapSize));
     heapify(0);
     return r;
   }
 
   private void heapify(int i) {
     int largest = i;
-    if (h[largest] < h[left(i)]) largest = left(i);
-    if (h[largest] < h[right(i)]) largest = right(i);
+    if (h.get(largest).compareTo(h.get(left(i))) < 0) largest = left(i);
+    if (h.get(largest).compareTo(h.get(right(i))) < 0) largest = right(i);
     if (largest != i) {
       exchange(h, largest, i);
       heapify(largest);
@@ -72,20 +77,28 @@ public class Heap<T extends Comparable<T>> {
   }
 
   public String toString() {
-    if (heapSize == 0) {
+    if (heapSize == 0)
       return "[]";
-    }
-    String a = "[";
+    String r = "[";
     int i = 0;
-    for (; i < heapSize -1;i++) {
-      a = a.concat(h[i] + ",");
+    while (i < heapSize-1) {
+      r = r.concat(h.get(i).toString() + ",");
+      i++;
     }
-    a = a.concat(h[i] + "]");
-    return a;
+    r = r.concat(h.get(i).toString() + "]");
+    return r;
   }
 
-  private static int logCeil(int base, int arg) {
-    int i = 0;
-    while (Math.pow(base, i) <=)
+  private boolean isHeap(int i) {
+    boolean order =
+      h.get(i).compareTo(h.get(left(i))) >= 0 &&
+      h.get(i).compareTo(h.get(right(i))) >= 0;
+    if (left(i) != i) {
+      order = order && isHeap(left(i));
+    }
+    if (right(i) != i) {
+      order = order && isHeap(right(i));
+    }
+    return order;
   }
 }
