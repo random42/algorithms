@@ -4,7 +4,20 @@ import java.util.*;
 
 class Tests {
   public static void main(String[] args) {
-    heapTest();
+    priorityQueueTest();
+  }
+
+  public static void priorityQueueTest() {
+    PriorityQueue<String> a = new PriorityQueue<String>();
+    a.insert("ciao", 12);
+    a.insert("io",13);
+    a.insert("tu",0);
+    a.insert("egli",20);
+    a.insert("mai",9);
+    System.out.println(a);
+    System.out.println(a.heap.isHeap());
+    System.out.println(a.extractMaximum());
+    System.out.println(a.heap.isHeap());
   }
 
   public static void heapTest() {

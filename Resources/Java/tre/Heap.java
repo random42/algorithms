@@ -12,10 +12,6 @@ public class Heap<T extends Comparable<T>> {
     arr.set(j, temp);
   }
 
-  public static void buildHeap() {
-
-  }
-
   public Heap() {
     h = new ArrayList<T>();
     heapSize = 0;
