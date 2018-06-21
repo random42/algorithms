@@ -29,7 +29,6 @@ list* min_distance(char* word, list* l) {
   return r;
 }
 
-
 list* read_words(char* path, char delimiter) {
   FILE* f = fopen(path, "r");
   list* words = newList();
