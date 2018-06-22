@@ -1,31 +1,58 @@
+package quattro;
+
 import java.util.*;
 
 public class Vertex<T> {
-  T elem; // info object linked to the vertex
-  ArrayList<Edge> adj; // edges from the vertex
+  T elem; // unique object linked to the vertex
+  ArrayList<Edge<T>> adj; // edges from the vertex
 
   public Vertex(T e) {
     elem = e;
-    adj = new ArrayList<Edge>();
+    adj = new ArrayList<Edge<T>>();
   }
 
-  public Edge addEdge(Vertex<T> v, double weight) {
-    Edge e = new Edge(weight, this, v);
-    adj.add(e);
+  public Edge<T> addEdge(Vertex<T> v, double weight) {
+    Edge<T> e = new Edge<T>(weight, this, v);
+    if (!this.isAdjacent(v)) {
+      adj.add(e);
+    }
     return e;
   }
 
-  public boolean isAdjacent(Vertex x) {
-    Iterator<Edge> i = adj.iterator();
+  public Edge<T> removeEdge(Vertex<T> v) {
+    Iterator<Edge<T>> i = adj.iterator();
+    boolean found = false;
+    Edge<T> e = null;
+    while (i.hasNext() && !found) {
+      e = i.next();
+      found = e.to.equals(v);
+    }
+    if (found) {
+      i.remove();
+      return e;
+    } else {
+      return null;
+    }
+  }
+
+  public boolean isAdjacent(Vertex<T> x) {
+    Iterator<Edge<T>> i = adj.iterator();
     boolean found = false;
     while (i.hasNext() && !found) {
-      Edge e = i.next();
+      Edge<T> e = i.next();
       found = e.to == x;
     }
     return found;
   }
 
   public String toString() {
-    return elem.toString();
+    String a = elem.toString();
+    a += " -> ";
+    Iterator<Edge<T>> i = adj.iterator();
+    while (i.hasNext()) {
+      Edge<T> n = i.next();
+      a += "{" + n.to.elem.toString() + ", " + n.weight + "}";
+    }
+    return a;
   }
 }

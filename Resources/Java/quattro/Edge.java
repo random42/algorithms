@@ -1,11 +1,11 @@
+package quattro;
 
-
-public class Edge {
+public class Edge<T> {
   double weight;
-  Vertex from;
-  Vertex to;
+  Vertex<T> from;
+  Vertex<T> to;
 
-  public Edge(double w, Vertex f, Vertex t) {
+  public Edge(double w, Vertex<T> f, Vertex<T> t) {
     weight = w;
     from = f;
     to = t;
