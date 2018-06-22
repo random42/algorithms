@@ -38,9 +38,20 @@ public class Graph<T> {
     return _edges;
   }
 
-  /*
+  public double getWeight() {
+    if (!weighted) throw new Error("Graph is not weighted!");
+    double weight = 0;
+    Iterator<Vertex<T>> i = vertices.iterator();
+    while (i.hasNext()) {
+      Vertex<T> u = i.next();
+      Iterator<Edge<T>> j = u.adj.iterator();
+      while (j.hasNext()) {
+        weight += j.next().weight;
+      }
+    }
+    return oriented ? weight : weight/2;
+  }
 
-  */
   public Vertex<T> addVertex(T elem) {
     Vertex<T> n = new Vertex<T>(elem);
     vertices.add(n);
@@ -63,7 +74,10 @@ public class Graph<T> {
     if (weighted) throw new Error("Need a weight to add edge!");
     Vertex<T> a = findVertex(u);
     Vertex<T> b = findVertex(v);
-    if (a == null || b == null) return;
+    if (a == null)
+      a = this.addVertex(u);
+    if (b == null)
+      b = this.addVertex(v);
     this.addEdge(a,b,1);
   }
 
@@ -72,13 +86,16 @@ public class Graph<T> {
     if (!weighted) throw new Error("Cannot specify a weight to add edge!");
     Vertex<T> a = findVertex(u);
     Vertex<T> b = findVertex(v);
-    if (a == null || b == null) return;
+    if (a == null)
+      a = this.addVertex(u);
+    if (b == null)
+      b = this.addVertex(v);
     this.addEdge(a,b,weight);
   }
 
   private void addEdge(Vertex<T> u, Vertex<T> v, double weight) {
     u.addEdge(v, weight);
-    if (!oriented && !u.equals(v)) {
+    if (!oriented) {
       v.addEdge(u, weight);
     }
     _edges++;
@@ -99,7 +116,7 @@ public class Graph<T> {
   }
 
   /*
-    removes edges from or to null vertices
+    removes edges to a deleted vertex
     takes O(E)
   */
   private void cleanEdgesToVertex(Vertex<T> v) {
@@ -118,7 +135,7 @@ public class Graph<T> {
       exists = i.next().elem.equals(elem);
       j++;
     }
-    return j < vertices.size() ? j : -1;
+    return exists ? j : -1;
   }
 
   private Vertex<T> findVertex(T elem) {

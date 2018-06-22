@@ -1,9 +1,9 @@
 package quattro;
 
 public class Edge<T> {
-  double weight;
-  Vertex<T> from;
-  Vertex<T> to;
+  protected double weight;
+  protected Vertex<T> from;
+  protected Vertex<T> to;
 
   public Edge(double w, Vertex<T> f, Vertex<T> t) {
     weight = w;

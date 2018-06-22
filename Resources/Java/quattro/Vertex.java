@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Vertex<T> {
   T elem; // unique object linked to the vertex
-  ArrayList<Edge<T>> adj; // edges from the vertex
+  protected ArrayList<Edge<T>> adj; // edges from the vertex
 
   public Vertex(T e) {
     elem = e;
@@ -13,9 +13,7 @@ public class Vertex<T> {
 
   public Edge<T> addEdge(Vertex<T> v, double weight) {
     Edge<T> e = new Edge<T>(weight, this, v);
-    if (!this.isAdjacent(v)) {
-      adj.add(e);
-    }
+    adj.add(e);
     return e;
   }
 
@@ -40,7 +38,7 @@ public class Vertex<T> {
     boolean found = false;
     while (i.hasNext() && !found) {
       Edge<T> e = i.next();
-      found = e.to == x;
+      found = e.to.equals(x);
     }
     return found;
   }
