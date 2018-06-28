@@ -8,15 +8,16 @@ class Tests {
   }
 
   public static void priorityQueueTest() {
-    PriorityQueue<String> a = new PriorityQueue<String>();
+    // true per coda di massimo
+    PriorityQueue<String> a = new PriorityQueue<String>(false);
     a.insert("ciao", 12);
     a.insert("io",13);
     a.insert("tu",0);
     a.insert("egli",20);
     a.insert("mai",9);
-    System.out.println(a);
+    //System.out.println(a);
     System.out.println(a.heap.isHeap());
-    System.out.println(a.extractMaximum());
+    System.out.println(a.extractMaximum().equals("tu"));
     System.out.println(a.heap.isHeap());
   }
 
