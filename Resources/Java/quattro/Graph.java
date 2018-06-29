@@ -3,14 +3,14 @@ package quattro;
 import java.util.*;
 
 /*
-  This is class is implemented with adjacent lists.
+  This class is implemented with adjacent lists.
   Vertices should be unique by their T elem field using Object.equals().
 */
 public class Graph<T> {
 
   private final boolean oriented;
   private final boolean weighted;
-  private ArrayList<Vertex<T>> vertices;
+  protected ArrayList<Vertex<T>> vertices;
   private int _edges;
 
   /*
@@ -113,6 +113,10 @@ public class Graph<T> {
       _edges--;
     }
     return;
+  }
+
+  public Iterator<Vertex<T>> iterator() {
+    return vertices.iterator();
   }
 
   /*

@@ -5,9 +5,11 @@ import java.util.*;
 class Tests {
   public static void main(String[] args) {
     priorityQueueTest();
+    heapTest();
   }
 
   public static void priorityQueueTest() {
+    System.out.println("PriorityQueue Test");
     // true per coda di massimo
     PriorityQueue<String> a = new PriorityQueue<String>(false);
     a.insert("ciao", 12);
@@ -15,9 +17,9 @@ class Tests {
     a.insert("tu",0);
     a.insert("egli",20);
     a.insert("mai",9);
-    //System.out.println(a);
+    // System.out.println(a);
     System.out.println(a.heap.isHeap());
-    System.out.println(a.extractMaximum().equals("tu"));
+    System.out.println(a.extract().equals("tu"));
     System.out.println(a.heap.isHeap());
   }
 
@@ -30,11 +32,11 @@ class Tests {
     a.insert(23);
     a.insert(42);
     System.out.println(a.isHeap());
-    a.extractMaximum();
+    a.extractMax();
     System.out.println(a.isHeap());
-    a.extractMaximum();
+    a.extractMax();
     System.out.println(a.isHeap());
-    a.extractMaximum();
+    a.extractMax();
     System.out.println(a.isHeap());
   }
 }

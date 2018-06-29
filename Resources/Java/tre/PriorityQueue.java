@@ -2,8 +2,8 @@ package tre;
 
 
 public class PriorityQueue<T> {
-  boolean max;
-  Heap<QueueElement<T>> heap;
+  final boolean max;
+  private Heap<QueueElement<T>> heap;
 
   public PriorityQueue(boolean max) {
     heap = new Heap<QueueElement<T>>();
@@ -14,18 +14,22 @@ public class PriorityQueue<T> {
     heap.insert(e);
   }
 
-  public void insert(T elem, int priority) {
+  public void insert(T elem, double priority) {
     if (!max) priority = -priority;
     QueueElement<T> q = new QueueElement<T>(elem, priority);
     heap.insert(q);
   }
 
-  public T extractMaximum() {
-    return heap.extractMaximum().elem;
+  public T extract() {
+    return heap.extractMax().elem;
   }
 
   public T maximum() {
     return heap.heapSize > 0 ? heap.h.get(0).elem : null;
+  }
+
+  public int length() {
+    return heap.heapSize;
   }
 
   public String toString() {

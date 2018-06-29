@@ -2,21 +2,23 @@ package tre;
 
 public class QueueElement<T> implements Comparable<QueueElement<T>>{
   T elem;
-  int priority;
+  double priority;
 
-  public QueueElement(T e, int p) {
+  public QueueElement(T e, double p) {
     elem = e;
     priority = p;
   }
 
   public int compareTo(QueueElement<T> o) {
-    return this.priority - o.priority;
+    if (priority > o.priority) return 1;
+    else if (priority == o.priority) return 0;
+    else return -1;
   }
 
   public String toString() {
     String r = "{";
     r = r.concat(elem.toString() + ", ");
-    r = r.concat(Integer.toString(priority) + "}");
+    r = r.concat(Double.toString(priority) + "}");
     return r;
   }
 }

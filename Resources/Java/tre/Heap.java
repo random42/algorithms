@@ -2,9 +2,10 @@ package tre;
 
 import java.util.*;
 
+
 public class Heap<T extends Comparable<T>> {
-  public ArrayList<T> h;
-  public int heapSize;
+  protected ArrayList<T> h;
+  protected int heapSize;
 
   public static <T extends Comparable<T>> void exchange(ArrayList<T> arr, int i, int j) {
     T temp = arr.get(i);
@@ -39,7 +40,7 @@ public class Heap<T extends Comparable<T>> {
     }
   }
 
-  public T extractMaximum() {
+  public T extractMax() {
     if (heapSize == 0)
       return null;
     T r = h.get(0);

@@ -12,7 +12,7 @@ public class Edge<T> {
   }
 
   public String toString() {
-    return this.from.toString() + " -> "
-      + this.to.toString() + " :: weight " + weight;
+    return this.from.toString() + " => { "
+      + this.to.toString() + ", weight " + weight + " }";
   }
 }
