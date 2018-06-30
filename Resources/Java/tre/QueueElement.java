@@ -1,13 +1,14 @@
 package tre;
 
-public class QueueElement<T> implements Comparable<QueueElement<T>>{
-  T elem;
-  double priority;
+class QueueElement<T> implements Comparable<QueueElement<T>> {
+  protected T elem;
+  protected double priority;
 
   public QueueElement(T e, double p) {
     elem = e;
     priority = p;
   }
+
 
   public int compareTo(QueueElement<T> o) {
     if (priority > o.priority) return 1;

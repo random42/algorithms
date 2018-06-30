@@ -2,60 +2,106 @@ package tre;
 
 import java.util.*;
 
+public class Heap<K extends Comparable<K>,V> {
+  // Element class
+  private class E implements Comparable<E>{
+    K key;
+    V value;
 
-public class Heap<T extends Comparable<T>> {
-  protected ArrayList<T> h;
-  protected int heapSize;
+    public E(V v, K k) {
+      key = k;
+      value = v;
+    }
 
-  public static <T extends Comparable<T>> void exchange(ArrayList<T> arr, int i, int j) {
-    T temp = arr.get(i);
-    arr.set(i, arr.get(j));
-    arr.set(j, temp);
+    public int compareTo(E obj) {
+      int a = key.compareTo(obj.key);
+      return max ? a : -a;
+    }
+
+    public String toString() {
+      String r = "{ " + key.toString() + " : " + value.toString() + " }";
+      return r;
+    }
   }
 
-  public Heap() {
-    h = new ArrayList<T>();
-    heapSize = 0;
+  private final boolean max;
+  protected ArrayList<E> h;
+  private HashMap<V,Integer> indexes;
+
+  public Heap(boolean m) {
+    max = m;
+    h = new ArrayList<E>();
+    indexes = new HashMap<V,Integer>();
   }
 
-  public Heap(int size) {
-    h = new ArrayList<T>(size);
-    heapSize = 0;
+  public Heap(boolean m, int size) {
+    max = m;
+    h = new ArrayList<E>(size);
+    indexes = new HashMap<V,Integer>(size);
+  }
+
+  public boolean isMaxHeap() {
+    return max;
+  }
+
+  public boolean contains(V value) {
+    return indexes.containsKey(value);
+  }
+
+  public K getKey(V value) {
+    return h.get(indexes.get(value)).key;
+  }
+
+  public void changeKey(V value, K newKey) {
+    int i = indexes.get(value);
+    h.set(i, new E(value, newKey));
+    heapifyUp(i);
+    heapifyDown(i);
   }
 
   // checks property H[i] >= H[left(i)], H[right(i)]
-  // and checks tree depth
   protected boolean isHeap() {
-    if (heapSize == 0)
+    if (h.size() == 0)
       return true;
     return isHeap(0);
   }
 
-  public void insert(T e) {
-    int i = heapSize++;
-    h.add(i, e);
-    while (i > 0 && h.get(parent(i)).compareTo(h.get(i)) < 0) {
-      exchange(h, i, parent(i));
-      i = parent(i);
-    }
+  public void insert(K key, V value) {
+    int i = h.size();
+    h.add(new E(value, key));
+    heapifyUp(i);
   }
 
-  public T extractMax() {
-    if (heapSize == 0)
+  public V extract() {
+    if (h.size() == 0)
       return null;
-    T r = h.get(0);
-    h.set(0, h.get(--heapSize));
-    heapify(0);
-    return r;
+    E first = h.get(0);
+    E last = h.get(h.size()-1);
+    exchange(0,h.size()-1);
+    h.remove(h.size()-1);
+    indexes.remove(first.value);
+    heapifyDown(0);
+    return first.value;
   }
 
-  private void heapify(int i) {
+  public int size() {
+    return h.size();
+  }
+
+  private void heapifyDown(int i) {
     int largest = i;
     if (h.get(largest).compareTo(h.get(left(i))) < 0) largest = left(i);
     if (h.get(largest).compareTo(h.get(right(i))) < 0) largest = right(i);
     if (largest != i) {
-      exchange(h, largest, i);
-      heapify(largest);
+      exchange(largest, i);
+      heapifyDown(largest);
+    }
+  }
+
+  private void heapifyUp(int i) {
+    while (i > 0 && h.get(parent(i)).compareTo(h.get(i)) < 0) {
+      exchange(i, parent(i));
+      i = parent(i);
     }
   }
 
@@ -65,20 +111,28 @@ public class Heap<T extends Comparable<T>> {
 
   private int left(int i) {
     int r = ((i+1) << 1)-1;
-    return r < heapSize ? r : i;
+    return r < h.size() ? r : i;
   }
 
   private int right(int i) {
     int r = ((i+1) << 1);
-    return r < heapSize ? r : i;
+    return r < h.size() ? r : i;
+  }
+
+  private void exchange(int i, int j) {
+    E temp = h.get(i);
+    indexes.put(temp.value, j);
+    indexes.put(h.get(j).value, i);
+    h.set(i, h.get(j));
+    h.set(j, temp);
   }
 
   public String toString() {
-    if (heapSize == 0)
+    if (h.size() == 0)
       return "[]";
     String r = "[";
     int i = 0;
-    while (i < heapSize-1) {
+    while (i < h.size()-1) {
       r = r.concat(h.get(i).toString() + ",");
       i++;
     }
