@@ -2,8 +2,19 @@ package tre;
 
 import java.util.*;
 
+/*
+  This class implements a Heap object with these properties:
+  - max/min choice
+  - Key type must be implements Comparable
+  - contains, getKey and size methods run in O(1)
+  - insert, extract and changeKey run in O(logN)
+*/
+
 public class Heap<K extends Comparable<K>,V> {
-  // Element class
+  /*
+    E class is only used privately
+    public methods will interact through V and K types
+  */
   private class E implements Comparable<E>{
     K key;
     V value;
@@ -26,7 +37,11 @@ public class Heap<K extends Comparable<K>,V> {
 
   private final boolean max;
   protected ArrayList<E> h;
-  private HashMap<V,Integer> indexes;
+  /*
+    this HashMap is needed to change keys in O(logN)
+    and retrieve keys in O(1)
+  */
+  protected HashMap<V,Integer> indexes;
 
   public Heap(boolean m) {
     max = m;
@@ -69,6 +84,7 @@ public class Heap<K extends Comparable<K>,V> {
   public void insert(K key, V value) {
     int i = h.size();
     h.add(new E(value, key));
+    indexes.put(value,i);
     heapifyUp(i);
   }
 
