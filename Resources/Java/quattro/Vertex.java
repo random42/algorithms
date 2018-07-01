@@ -43,6 +43,10 @@ public class Vertex<T> {
     return found;
   }
 
+  public Iterator<Edge<T>> iterator() {
+    return adj.iterator();
+  }
+
   public String toString() {
     String a = elem.toString();
     a += " -> ";

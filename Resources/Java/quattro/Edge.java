@@ -11,8 +11,12 @@ public class Edge<T> {
     to = t;
   }
 
+  public double getWeight() {
+    return weight;
+  }
+
   public String toString() {
-    return this.from.toString() + " => { "
-      + this.to.toString() + ", weight " + weight + " }";
+    return this.from.elem.toString() + " => { "
+      + this.to.elem.toString() + ", weight " + weight + " }";
   }
 }

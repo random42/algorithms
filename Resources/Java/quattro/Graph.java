@@ -38,6 +38,10 @@ public class Graph<T> {
     return _edges;
   }
 
+  public boolean isOriented() {return oriented;}
+
+  public boolean isWeighted() {return weighted;}
+
   public double getWeight() {
     if (!weighted) throw new Error("Graph is not weighted!");
     double weight = 0;

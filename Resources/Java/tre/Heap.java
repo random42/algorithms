@@ -64,7 +64,7 @@ public class Heap<K extends Comparable<K>,V> {
   }
 
   public K getKey(V value) {
-    return h.get(indexes.get(value)).key;
+    return indexes.containsKey(value) ? h.get(indexes.get(value)).key : null;
   }
 
   public void changeKey(V value, K newKey) {
@@ -96,7 +96,8 @@ public class Heap<K extends Comparable<K>,V> {
     exchange(0,h.size()-1);
     h.remove(h.size()-1);
     indexes.remove(first.value);
-    heapifyDown(0);
+    if (h.size() > 0)
+      heapifyDown(0);
     return first.value;
   }
 
