@@ -91,6 +91,7 @@ public class Utils {
       return false;
     }
     // sort array first
+    array = new ArrayList<Long>(array);
     mergeSortRecursive(array);
     int length = array.size();
     int i = 0;
