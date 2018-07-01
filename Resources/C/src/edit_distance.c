@@ -11,7 +11,7 @@ char* rest(char* s1) {
   return s1 + 1;
 }
 
-int edit_distance(char* s1, char* s2) {
+int editDistance(char* s1, char* s2) {
   if (strlen(s1) == 0) {
     return strlen(s2);
   }
@@ -19,16 +19,16 @@ int edit_distance(char* s1, char* s2) {
     return strlen(s1);
   }
   else {
-    int a = s1[0] == s2[0] ? edit_distance(rest(s1),rest(s2)) : 1 << 30;
-    int b = 1 + edit_distance(s1, rest(s2));
-    int c = 1 + edit_distance(rest(s1), s2);
+    int a = s1[0] == s2[0] ? editDistance(rest(s1),rest(s2)) : INT_MAX;
+    int b = 1 + editDistance(s1, rest(s2));
+    int c = 1 + editDistance(rest(s1), s2);
     return min(a,b,c);
   }
 }
 
 
 
-int edit_distance_dyn(char* s1, char* s2) {
+int editDistanceDyn(char* s1, char* s2) {
   int m = strlen(s1);
   int n = strlen(s2);
   register int i, j;
@@ -58,6 +58,6 @@ int edit_distance_dyn(char* s1, char* s2) {
       }
     }
   }
-  
+
   return d[m][n];
 }

@@ -2,18 +2,26 @@
 #include <stdio.h>
 #include <limits.h>
 #include <string.h>
+#include <sys/time.h>
 
 #include "edit_distance.h"
 #include "list.h"
 #include "util.h"
 
-list* min_distance(char* word, list* l) {
+typedef struct {
+  char* original;
+  list* words;
+  int distance;
+} edit_t;
+
+
+edit_t* minDistance(char* word, list* l) {
   list* r = newList();
-  if (word == NULL || l == NULL) return r;
+  if (word == NULL || l == NULL) return NULL;
   node* n = l->first;
   int min = INT_MAX;
   while (n != NULL) {
-    int distance = edit_distance_dyn(word, n->word);
+    int distance = editDistanceDyn(word, n->word);
     if (distance < min) {
       min = distance;
       deleteList(r);
@@ -25,11 +33,14 @@ list* min_distance(char* word, list* l) {
     }
     n = n->next;
   }
-  printf("Word: %s\tedit_distance: %d\n", word, min);
-  return r;
+  edit_t* result = malloc(sizeof(edit_t));
+  result->original = word;
+  result->words = r;
+  result->distance = min;
+  return result;
 }
 
-list* read_words(char* path, char delimiter) {
+list* readWords(char* path, char delimiter) {
   FILE* f = fopen(path, "r");
   list* words = newList();
   int c = 0, end = 0;
@@ -52,6 +63,7 @@ list* read_words(char* path, char delimiter) {
       }
       // add NULL char
       word[++i] = '\0';
+      toLowerCase(word);
       // append to words
       appendToList(words, word);
     }
@@ -65,12 +77,20 @@ list* read_words(char* path, char delimiter) {
 }
 
 int main() {
-  list* dict = read_words("../../datasets/dictionary.txt", '\n');
-  list* correct_me = read_words("../../datasets/correctme.txt", ' ');
+  list* dict = readWords("../../datasets/dictionary.txt", '\n');
+  list* correct_me = readWords("../../datasets/correctme.txt", ' ');
   node* n = correct_me->first;
+  int i = 0;
+  struct timeval start;
+  gettimeofday(&start,NULL);
   while (n != NULL) {
-    list* words = min_distance(n->word, dict);
-    printList(words);
+    i++;
+    edit_t* res = minDistance(n->word, dict);
+    printf("\nWord: %s\nMinimum distance: %d\nList: ", res->original, res->distance);
+    printList(res->words);
     n = n->next;
   }
+  double end = elapsedTime(&start);
+  printf("\n\nProcess took %lf seconds.\nOn average %lf seconds per word.\n",
+  end, end/(double)i);
 }

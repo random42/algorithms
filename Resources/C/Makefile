@@ -2,6 +2,8 @@
 #    sostituire con -Wall -Wpedantic
 CFLAGS = -g -Wall -Wpedantic -Wno-padded
 
+BIN = bin
+BUILD = build
 CC = gcc
 # Lista degli header files
 INCLUDES = src/*.h
@@ -13,14 +15,14 @@ COMMON_DEPS = $(INCLUDES) Makefile
 # lista dei target da eseguire sempre
 all: dirs test due
 
-due: build/due.o build/edit_distance.o build/util.o build/list.o
-	$(CC) -o bin/$@ $^
+due: $(BUILD)/due.o $(BUILD)/edit_distance.o $(BUILD)/util.o $(BUILD)/list.o
+	$(CC) -o $(BIN)/$@ $^
 
-test: build/tests.o build/edit_distance.o build/util.o
-	$(CC) -o bin/$@ $^
+test: $(BUILD)/tests.o $(BUILD)/edit_distance.o $(BUILD)/util.o
+	$(CC) -o $(BIN)/$@ $^
 
 dirs:
-	mkdir -p bin build
+	mkdir -p $(BIN) $(BUILD)
 
 # regola per compilare un .c in un .o
 # viene applicata ogni volta che una dipendenza richiede di compilare un file in
@@ -30,8 +32,8 @@ dirs:
 # Le variabili $< e $@ sono gestite automaticamente da `make` esse corrispondono:
 #   $@ : l'intero target della regola (in questo caso: build/<nomefile>.o)
 #   $< : la prima dipendenza della regola (in questo caso: src/<nomefile>.c)
-build/%.o: src/%.c $(COMMON_DEPS)
+$BUILD/%.o: src/%.c $(COMMON_DEPS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f build/* bin/*
+	rm -f $(BIN) $(BUILD)
