@@ -1,6 +1,6 @@
 package quattro;
 
-import tre.PriorityQueue;
+import tre.Heap;
 
 public class Algorithms {
 
