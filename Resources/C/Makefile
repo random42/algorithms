@@ -32,8 +32,8 @@ dirs:
 # Le variabili $< e $@ sono gestite automaticamente da `make` esse corrispondono:
 #   $@ : l'intero target della regola (in questo caso: build/<nomefile>.o)
 #   $< : la prima dipendenza della regola (in questo caso: src/<nomefile>.c)
-$BUILD/%.o: src/%.c $(COMMON_DEPS)
+$(BUILD)/%.o: src/%.c $(COMMON_DEPS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(BIN) $(BUILD)
+	rm -f $(BIN)/* $(BUILD)/*

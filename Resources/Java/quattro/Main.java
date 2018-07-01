@@ -6,7 +6,7 @@ import java.util.*;
 public class Main {
   public static void main(String[] args) {
     System.out.println("Reading csv file...");
-    Graph<String> g = readCsv("/Users/random/Code/uni/laboratorio-algoritmi-2017-18/datasets/italian_dist_graph.csv");
+    Graph<String> g = readCsv("../../datasets/italian_dist_graph.csv");
     System.out.println(
       "Graph stats" +
       "\nVertices: " + g.getNumberOfVertices() +

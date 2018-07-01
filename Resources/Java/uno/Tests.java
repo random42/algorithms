@@ -4,7 +4,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import java.util.*;
 
-class Tests {
+public class Tests {
   @Test
   public void insertionSort() {
     List<Integer> list = Arrays.asList(1,5,7,2,4,800,35,12,3);

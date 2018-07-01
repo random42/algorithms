@@ -11,7 +11,19 @@ import java.io.*;
 public class Main {
 
   public static void main(String[] args) {
-    sortIntegers();
+    System.out.println("Reading integers...");
+    String path = "../../datasets/integers.csv";
+    ArrayList<Long> array = readIntegers(path);
+    System.out.println("Array length: " + array.size());
+    System.out.println("\nSorting array...\n");
+    // insertionSort takes too much time, I'll let your CPU live one more day
+    // measureSort(array, "insertionSort");
+    measureSort(array, "mergeSortIterative");
+    ArrayList<Long> sorted = measureSort(array, "mergeSortRecursive");
+    System.out.println("\nWriting sorted integers to file \"sorted_integers.csv\"");
+    String outputPath = "../../datasets/sorted_integers.csv";
+    writeIntegers(outputPath, sorted);
+    findSums(array);
   }
 
   public static ArrayList<Long> measureSort(ArrayList<Long> array, String method) {
@@ -68,14 +80,15 @@ public class Main {
       // closing input read
       input.close();
       return array;
-    } catch(IOException e) {
-      System.out.println(e.getMessage());
+    }
+    catch(IOException e) {
       return null;
     }
   }
 
   public static void findSums(ArrayList<Long> integers) {
-    ArrayList<Long> sums = readIntegers("/Users/random/code/uni/laboratorio-algoritmi-2017-18/datasets/sums.txt");
+    System.out.println("\nFinding sums...\n");
+    ArrayList<Long> sums = readIntegers("../../datasets/sums.txt");
     Iterator<Long> iterator = sums.iterator();
     long startTime = System.currentTimeMillis();
     int i = 0;
@@ -89,22 +102,5 @@ public class Main {
     double seconds = (double)(endTime - startTime) / 1000;
     System.out.println("Finding sums took " + seconds + " seconds");
     System.out.println("On average took " + seconds/(double)i + " seconds per number");
-  }
-
-  public static void sortIntegers() {
-    System.out.println("Reading integers...");
-    String path = "/Users/random/code/uni/laboratorio-algoritmi-2017-18/datasets/integers.csv";
-    ArrayList<Long> array = readIntegers(path);
-    System.out.println("Array length: " + array.size());
-    System.out.println("\nSorting array...\n");
-    // insertionSort takes too much time, I'll let your CPU live one more day
-    // measureSort(array, "insertionSort");
-    measureSort(array, "mergeSortIterative");
-    ArrayList<Long> sorted = measureSort(array, "mergeSortRecursive");
-    System.out.println("\nWriting sorted integers to file \"sorted_integers.csv\"");
-    String outputPath = "/Users/random/code/uni/laboratorio-algoritmi-2017-18/datasets/sorted_integers.csv";
-    writeIntegers(outputPath, sorted);
-    System.out.println("\nFinding sums...\n");
-    findSums(array);
   }
 }
