@@ -33,7 +33,7 @@ public class Main {
     }
     Utils.mergeSortIterative(copy);
     long endTime = System.currentTimeMillis();
-    double seconds = (double)(endTime - startTime) / 60;
+    double seconds = (double)(endTime - startTime) / 1000;
     System.out.println(method + " took " + seconds + " seconds");
     return copy;
   }
@@ -78,14 +78,17 @@ public class Main {
     ArrayList<Long> sums = readIntegers("/Users/random/code/uni/laboratorio-algoritmi-2017-18/datasets/sums.txt");
     Iterator<Long> iterator = sums.iterator();
     long startTime = System.currentTimeMillis();
+    int i = 0;
     while (iterator.hasNext()) {
+      i++;
       long value = iterator.next();
       System.out.print(value + " => ");
       System.out.println(Utils.containsSum(integers, value));
     }
     long endTime = System.currentTimeMillis();
-    double seconds = (double)(endTime - startTime) / 60;
+    double seconds = (double)(endTime - startTime) / 1000;
     System.out.println("Finding sums took " + seconds + " seconds");
+    System.out.println("On average took " + seconds/(double)i + " seconds per number");
   }
 
   public static void sortIntegers() {
@@ -94,7 +97,8 @@ public class Main {
     ArrayList<Long> array = readIntegers(path);
     System.out.println("Array length: " + array.size());
     System.out.println("\nSorting array...\n");
-    measureSort(array, "insertionSort");
+    // insertionSort takes too much time, I'll let your CPU live one more day
+    // measureSort(array, "insertionSort");
     measureSort(array, "mergeSortIterative");
     ArrayList<Long> sorted = measureSort(array, "mergeSortRecursive");
     System.out.println("\nWriting sorted integers to file \"sorted_integers.csv\"");
