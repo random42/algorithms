@@ -42,6 +42,9 @@ edit_t* minDistance(char* word, list* l) {
 
 list* readWords(char* path, char delimiter) {
   FILE* f = fopen(path, "r");
+  if (f == NULL) {
+    return NULL;
+  }
   list* words = newList();
   int c = 0, end = 0;
   if (f) {
@@ -79,6 +82,10 @@ list* readWords(char* path, char delimiter) {
 int main() {
   list* dict = readWords("../../datasets/dictionary.txt", '\n');
   list* correct_me = readWords("../../datasets/correctme.txt", ' ');
+  if (dict == NULL || correct_me == NULL) {
+    printf("Data files do not exist\n");
+    return EXIT_FAILURE;
+  }
   node* n = correct_me->first;
   int i = 0;
   struct timeval start;

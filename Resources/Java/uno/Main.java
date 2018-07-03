@@ -11,8 +11,8 @@ import java.io.*;
 public class Main {
 
   public static void main(String[] args) {
-    System.out.println("Reading integers...");
     String path = "../../datasets/integers.csv";
+    System.out.println("Reading integers from \"" + path + "\"");
     ArrayList<Long> array = readIntegers(path);
     System.out.println("Array length: " + array.size());
     System.out.println("\nSorting array...\n");
@@ -20,8 +20,8 @@ public class Main {
     // measureSort(array, "insertionSort");
     measureSort(array, "mergeSortIterative");
     ArrayList<Long> sorted = measureSort(array, "mergeSortRecursive");
-    System.out.println("\nWriting sorted integers to file \"sorted_integers.csv\"");
     String outputPath = "../../datasets/sorted_integers.csv";
+    System.out.println("\nWriting sorted integers to \"" + outputPath + "\"");
     writeIntegers(outputPath, sorted);
     findSums(array);
   }
@@ -82,7 +82,7 @@ public class Main {
       return array;
     }
     catch(IOException e) {
-      return null;
+      throw new Error("File not found!\nPath: " + filePath);
     }
   }
 

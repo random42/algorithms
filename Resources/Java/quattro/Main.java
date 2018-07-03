@@ -8,7 +8,7 @@ public class Main {
     System.out.println("Reading csv file...");
     Graph<String> g = readCsv("../../datasets/italian_dist_graph.csv");
     System.out.println(
-      "Graph stats" +
+      "\nGraph stats" +
       "\nVertices: " + g.getNumberOfVertices() +
       "\nEdges: " + g.getNumberOfEdges() +
       "\nWeight: " + g.getWeight()
@@ -32,8 +32,8 @@ public class Main {
       }
       return graph;
     }
-    catch(Exception e) {
-      return null;
+    catch(IOException e) {
+      throw new Error("File not found!\nPath: " + path);
     }
   }
 
