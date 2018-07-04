@@ -33,6 +33,16 @@ public class Vertex<T> {
     }
   }
 
+  public Edge<T> getEdge(T x) {
+    Iterator<Edge<T>> i = adj.iterator();
+    while (i.hasNext()) {
+      Edge<T> e = i.next();
+      if (e.to.equals(x))
+        return e;
+    }
+    return null;
+  }
+
   public boolean isAdjacent(Vertex<T> x) {
     Iterator<Edge<T>> i = adj.iterator();
     boolean found = false;

@@ -5,15 +5,29 @@ import tre.Heap;
 
 public class Algorithms {
 
-  public static <T> ArrayList<Edge<T>> MstPrim(Graph<T> g) {
-    return MstPrim(g,g.vertices.get(0));
+  public static <T> ArrayList<ArrayList<Edge<T>>> msfPrim(Graph<T> g) {
+    ArrayList<Vertex<T>> visited = new ArrayList<Vertex<T>>(g.vertices);
+    ArrayList<ArrayList<Edge<T>>> forest = new ArrayList<ArrayList<Edge<T>>>();
+    while (visited.size() > 0) {
+      ArrayList<Edge<T>> path = mstPrim(g, visited.get(0));
+      forest.add(path);
+      Iterator<Edge<T>> i = path.iterator();
+      while (i.hasNext()) {
+        Edge<T> e = i.next();
+        visited.remove(e.from);
+        visited.remove(e.to);
+      }
+    }
+    return forest;
   }
 
-  public static <T> ArrayList<Edge<T>> MstPrim(Graph<T> g, Vertex<T> source) {
+  public static <T> ArrayList<Edge<T>> mstPrim(Graph<T> g, Vertex<T> source) {
     if (g.isOriented() || !g.isWeighted())
       throw new Error("Graph must be weighted and not oriented!");
     int vSize = g.getNumberOfVertices();
-    ArrayList<Edge<T>> path = new ArrayList<Edge<T>>(vSize);
+    // list of tree edges
+    ArrayList<Edge<T>> mst = new ArrayList<Edge<T>>(vSize);
+    // retrieves u.pi property as an Edge(u.pi, u)
     HashMap<Vertex<T>,Edge<T>> pi = new HashMap<Vertex<T>,Edge<T>>(vSize);
     Heap<Double,Vertex<T>> queue = new Heap<Double,Vertex<T>>(false, vSize);
     for (int i = 0;i < vSize;i++) {
@@ -21,10 +35,14 @@ public class Algorithms {
     }
     queue.changeKey(source, 0.0);
     while (queue.size() > 0) {
+      Double key = queue.getFirstKey();
       Vertex<T> u = queue.extract();
       Edge<T> from = pi.get(u);
+      if (key == Double.POSITIVE_INFINITY) {
+        continue;
+      }
       if (from != null)
-        path.add(from);
+        mst.add(from);
       Iterator<Edge<T>> i = u.iterator();
       while (i.hasNext()) {
         Edge<T> e = i.next();
@@ -35,7 +53,7 @@ public class Algorithms {
         }
       }
     }
-    return path;
+    return mst;
   }
 
 }

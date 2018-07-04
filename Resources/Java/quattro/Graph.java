@@ -105,6 +105,11 @@ public class Graph<T> {
     _edges++;
   }
 
+  public Edge<T> getEdge(T u, T v) {
+    Vertex<T> from = findVertex(u);
+    return from.getEdge(v);
+  }
+
   public void removeEdge(T u, T v) {
     Vertex<T> a = findVertex(u);
     Vertex<T> b = findVertex(v);

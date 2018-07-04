@@ -36,7 +36,9 @@ public class Heap<K extends Comparable<K>,V> {
   }
 
   private final boolean max;
+
   protected ArrayList<E> h;
+
   /*
     this HashMap is needed to change keys in O(logN)
     and retrieve keys in O(1)
@@ -66,6 +68,10 @@ public class Heap<K extends Comparable<K>,V> {
   public K getKey(V value) {
     return indexes.containsKey(value) ? h.get(indexes.get(value)).key : null;
   }
+
+  public K getFirstKey() {
+    return size() > 0 ? h.get(0).key : null;
+   }
 
   public void changeKey(V value, K newKey) {
     int i = indexes.get(value);
@@ -155,6 +161,16 @@ public class Heap<K extends Comparable<K>,V> {
     }
     r = r.concat(h.get(i).toString() + "]");
     return r;
+  }
+
+  public ArrayList<K> keys() {
+    ArrayList<K> k = new ArrayList<K>(h.size());
+    int i = 0;
+    while (i < h.size()) {
+      k.add(h.get(i).key);
+      i++;
+    }
+    return k;
   }
 
   private boolean isHeap(int i) {

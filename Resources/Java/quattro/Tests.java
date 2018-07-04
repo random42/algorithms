@@ -25,11 +25,11 @@ public class Tests {
 
   @Test
   public void addingEdgeWillAddVertices() {
-    Graph<String> g = new Graph<String>();
+    Graph<String> g = new Graph<String>(false, true);
     g.addEdge("albero","muro",4);
     g.addEdge("muro","lama",5);
     g.addEdge("carro","albero",6);
-    //System.out.println(g);
+    assertEquals(g.getNumberOfEdges(), 3);
     assertEquals(g.getNumberOfVertices(), 4);
   }
 

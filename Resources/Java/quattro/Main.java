@@ -8,17 +8,21 @@ public class Main {
     System.out.println("Reading csv file...");
     Graph<String> g = readCsv("../../datasets/italian_dist_graph.csv");
     System.out.println(
-      "\nGraph stats" +
+      "\nGraph stats\n" +
       "\nVertices: " + g.getNumberOfVertices() +
       "\nEdges: " + g.getNumberOfEdges() +
-      "\nWeight: " + g.getWeight()
+      "\nWeight: " + g.getWeight() +
+      "\n\nMinimum spanning forest\n"
     );
-    ArrayList<Edge<String>> mst = Algorithms.MstPrim(g);
-    System.out.println(
-      "\nMinimum spanning tree" +
-      "\nEdges: " + mst.size() +
-      "\nWeight: " + mstWeight(mst)
-    );
+    ArrayList<ArrayList<Edge<String>>> msf = Algorithms.msfPrim(g);
+    int edges = 0; double weight = 0;
+    for (int i = 0; i < msf.size(); i++) {
+      ArrayList<Edge<String>> mst = msf.get(i);
+      edges += mst.size();
+      weight += mstWeight(mst);
+      printMstStats(msf.get(i));
+    }
+    System.out.println("\nForest:\nEdges: " + edges + "\nWeight: " + weight);
   }
 
   public static Graph<String> readCsv(String path) {
@@ -44,5 +48,13 @@ public class Main {
       w += i.next().getWeight();
     }
     return w;
+  }
+
+  public static <T> void printMstStats(ArrayList<Edge<T>> mst) {
+    System.out.println(
+      "\nMinimum spanning tree" +
+      "\nEdges: " + mst.size() +
+      "\nWeight: " + mstWeight(mst)
+    );
   }
 }
