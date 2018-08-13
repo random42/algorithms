@@ -5,7 +5,7 @@ import java.util.*;
 /*
   This class implements a Heap object with these properties:
   - max/min choice
-  - Key type must be implements Comparable
+  - Key type must implement Comparable
   - contains, getKey and size methods run in O(1)
   - insert, extract and changeKey run in O(logN)
 */
